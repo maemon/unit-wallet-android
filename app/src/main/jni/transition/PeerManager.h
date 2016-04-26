@@ -23,8 +23,8 @@
 //  THE SOFTWARE.
 
 #include "jni.h"
-#include "BRInt.h"
-#include "BRPeerManager.h"
+#include "../breadwallet-core/BRInt.h"
+#include "../breadwallet-core/BRPeerManager.h"
 
 #ifndef BREADWALLET_PEERMANAGER_H
 #define BREADWALLET_PEERMANAGER_H

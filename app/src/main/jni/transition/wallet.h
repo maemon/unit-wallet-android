@@ -22,8 +22,8 @@
 //  THE SOFTWARE.
 
 #include "jni.h"
-#include "BRInt.h"
-#include "BRWallet.h"
+#include "../breadwallet-core/BRInt.h"
+#include "../breadwallet-core/BRWallet.h"
 
 #ifndef BREADWALLET_WALLET_H
 #define BREADWALLET_WALLET_H

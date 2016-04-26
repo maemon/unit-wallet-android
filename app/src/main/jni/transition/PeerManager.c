@@ -23,12 +23,12 @@
 //  THE SOFTWARE.
 
 #include "PeerManager.h"
-#include "BRPeer.h"
-#include "BRBIP39Mnemonic.h"
-#include "BRInt.h"
+#include "../breadwallet-core/BRPeer.h"
+#include "../breadwallet-core/BRBIP39Mnemonic.h"
+#include "../breadwallet-core/BRInt.h"
 #include <android/log.h>
-#include "BRMerkleBlock.h"
-#include "BRWallet.h"
+#include "../breadwallet-core/BRMerkleBlock.h"
+#include "../breadwallet-core/BRWallet.h"
 #include "wallet.h"
 #include <pthread.h>
 

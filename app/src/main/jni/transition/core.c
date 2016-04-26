@@ -27,11 +27,11 @@
 #include "core.h"
 #include "wallet.h"
 #include <stdio.h>
-#include "BRPaymentProtocol.h"
-#include "BRTransaction.h"
-#include "BRAddress.h"
-#include "BRWallet.h"
-#include "BRBIP39Mnemonic.h"
+#include "../breadwallet-core/BRPaymentProtocol.h"
+#include "../breadwallet-core/BRTransaction.h"
+#include "../breadwallet-core/BRAddress.h"
+#include "../breadwallet-core/BRWallet.h"
+#include "../breadwallet-core/BRBIP39Mnemonic.h"
 #include <android/log.h>
 
 //
