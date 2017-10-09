@@ -1,9 +1,3 @@
-![ƀ](/images/icon.png) breadwallet for Android
-----------------------------------
-
-[![download](/images/icon-google-play.png)]
-(https://play.google.com/store/apps/details?id=com.breadwallet)
-
 ###bitcoin done right
 
 This is the Android port of the breadwallet iOS app, which can be found [here](https://github.com/breadwallet/breadwallet/).
