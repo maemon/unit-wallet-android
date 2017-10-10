@@ -1,4 +1,4 @@
-###Unit Wallet
+### Unit Wallet
 
 Unit Wallet (Android) is a fork of breadwallet Android which can be found [here](https://github.com/breadwallet/breadwallet-android).
 
