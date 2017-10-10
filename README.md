@@ -1,7 +1,9 @@
-Unit Wallet is a fork of breadwallet Android which can be found [here](https://github.com/breadwallet/breadwallet-android).
+Unit Wallet (Android) is a fork of breadwallet Android which can be found [here](https://github.com/breadwallet/breadwallet-android).
 
 [Our Official Website](https://www.unitwallet.co)
+
 [Our Official Twitter](https://twitter.com/unitwallet)
+
 [Our Official Blog](https://www.yours.org/user/unitco)
 
 Wallet Description:
