@@ -205,7 +205,6 @@
   <!-- Jailbreak warning title -->
   <string name="JailbreakWarnings.title">AVERTISSEMENT</string>
   <!-- Wipe wallet button -->
-  <string name="JailbreakWarnings.wipe">Supprimer</string>
   <!-- Location services disabled error -->
   <string name="LocationPlugin.disabled">Les services de localisation sont désactivés.</string>
   <!-- No permissions for location services -->

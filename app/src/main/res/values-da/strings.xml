@@ -205,7 +205,6 @@
   <!-- Jailbreak warning title -->
   <string name="JailbreakWarnings.title">ADVARSEL</string>
   <!-- Wipe wallet button -->
-  <string name="JailbreakWarnings.wipe">Ryd</string>
   <!-- Location services disabled error -->
   <string name="LocationPlugin.disabled">Placeringstjenester er deaktiveret.</string>
   <!-- No permissions for location services -->

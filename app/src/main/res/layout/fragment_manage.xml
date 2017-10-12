@@ -27,7 +27,7 @@
             android:text="Manage Wallet"
             android:textColor="@color/almost_black"
             android:textSize="22sp"
-            app:customFont="CircularPro-Bold.otf"
+            app:customFont="HelveticaNeue.ttf"
             />
 
         <View
@@ -52,9 +52,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:text="My Bread"
+            android:text="My Unit"
             android:textColor="@color/almost_black"
-            android:textSize="18sp"/>
+            android:textSize="18sp" />
 
         <View
             android:id="@+id/view2"

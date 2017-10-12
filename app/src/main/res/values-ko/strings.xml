@@ -205,7 +205,6 @@
   <!-- Jailbreak warning title -->
   <string name="JailbreakWarnings.title">경고</string>
   <!-- Wipe wallet button -->
-  <string name="JailbreakWarnings.wipe">초기화</string>
   <!-- Location services disabled error -->
   <string name="LocationPlugin.disabled">위치 서비스가 꺼졌습니다.</string>
   <!-- No permissions for location services -->

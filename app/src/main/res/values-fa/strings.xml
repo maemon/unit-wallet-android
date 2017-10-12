@@ -143,7 +143,6 @@
   <!-- Jailbreak warning title -->
   <string name="JailbreakWarnings.title">هشدار</string>
   <!-- Wipe wallet button -->
-  <string name="JailbreakWarnings.wipe">پاک شود</string>
   <!-- Location services disabled error -->
   <string name="LocationPlugin.disabled">سرویس موقعیت‌یاب غیرفعال است.</string>
   <!-- No permissions for location services -->
