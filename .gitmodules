@@ -1,5 +1,5 @@
 [submodule "app/src/main/jni/unitwallet-core"]
-	path = app/src/main/jni/breadwallet-core
+	path = app/src/main/jni/unitwallet-core
 	url = https://github.com/dr0pthedoge/unitwallet-core.git
 [submodule "app/src/main/secp/secp256k1"]
 	path = app/src/main/secp/secp256k1
