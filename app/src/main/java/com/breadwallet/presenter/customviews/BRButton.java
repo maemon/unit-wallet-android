@@ -240,6 +240,22 @@ public class BRButton extends Button {
             bPaint.setColor(getContext().getColor(R.color.button_secondary));
             bPaint.setStyle(Paint.Style.FILL);
         }
+		else if (type == 4) { //custom strokeww
+            bPaintStroke.setColor(getContext().getColor(R.color.button_primary_normal));
+            bPaintStroke.setStyle(Paint.Style.STROKE);
+            bPaintStroke.setStrokeWidth(Utils.getPixelsFromDps(getContext(), 1));
+            setTextColor(getContext().getColor(R.color.white));
+            bPaint.setColor(getContext().getColor(R.color.customButtonColor));
+            bPaint.setStyle(Paint.Style.FILL);
+        }
+				else if (type == 5) { //custom strokeww
+            bPaintStroke.setColor(getContext().getColor(R.color.button_primary_normal));
+            bPaintStroke.setStyle(Paint.Style.STROKE);
+            bPaintStroke.setStrokeWidth(Utils.getPixelsFromDps(getContext(), 1));
+            setTextColor(getContext().getColor(R.color.white));
+            bPaint.setColor(getContext().getColor(R.color.logo_gradient_start));
+            bPaint.setStyle(Paint.Style.FILL);
+        }
         invalidate();
     }
 

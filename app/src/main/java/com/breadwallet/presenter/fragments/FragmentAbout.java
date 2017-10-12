@@ -1,8 +1,10 @@
 package com.breadwallet.presenter.fragments;
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.CardView;
@@ -13,7 +15,6 @@ import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.webkit.ConsoleMessage;
 import android.webkit.JsResult;
-import android.webkit.ValueCallback;
 import android.webkit.WebChromeClient;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebSettings;
@@ -27,10 +28,8 @@ import com.breadwallet.tools.animation.SlideDetector;
 import com.breadwallet.tools.util.Utils;
 import com.platform.HTTPServer;
 
-import java.net.URI;
-import java.net.URISyntaxException;
-
-import static com.platform.HTTPServer.URL_SUPPORT;
+import static com.platform.HTTPServer.URL_DISCOVER;
+import static com.platform.HTTPServer.URL_ABOUT;
 
 
 /**
@@ -58,8 +57,8 @@ import static com.platform.HTTPServer.URL_SUPPORT;
  * THE SOFTWARE.
  */
 
-public class FragmentSupport extends Fragment {
-    private static final String TAG = FragmentSupport.class.getName();
+public class FragmentAbout extends Fragment {
+    private static final String TAG = FragmentAbout.class.getName();
     public LinearLayout backgroundLayout;
     public CardView signalLayout;
     WebView webView;
@@ -82,25 +81,9 @@ public class FragmentSupport extends Fragment {
         webView = (WebView) rootView.findViewById(R.id.web_view);
         webView.setWebChromeClient(new BRWebChromeClient());
         webView.setWebViewClient(new WebViewClient() {
-            @Override
-            public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
-                Log.d(TAG, "shouldOverrideUrlLoading: " + request.getUrl());
-                Log.d(TAG, "shouldOverrideUrlLoading: " + request.getMethod());
-                if (onCloseUrl != null && request.getUrl().toString().equalsIgnoreCase(onCloseUrl)) {
-                    getActivity().onBackPressed();
-                    onCloseUrl = null;
-                } else if (request.getUrl().toString().contains("_close")) {
-                    getActivity().onBackPressed();
-                } else {
-                    view.loadUrl(request.getUrl().toString());
-                }
-
-                return true;
-            }
 
             @Override
             public void onPageFinished(WebView view, String url) {
-                super.onPageFinished(view, url);
                 super.onPageFinished(view, url);
                 webView.loadUrl("javascript:(function() { " +
                         "document.getElementsByTagName('header')[0].style.display=\"none\"; " +
@@ -108,6 +91,7 @@ public class FragmentSupport extends Fragment {
                 webView.loadUrl("javascript:(function() { " +
                         "document.getElementsByTagName('footer')[0].style.display=\"none\"; " +
                         "})()");
+
             }
 
             @Override
@@ -117,7 +101,7 @@ public class FragmentSupport extends Fragment {
             }
         });
 
-        theUrl = "http://www.unitwallet.co/contact";
+        theUrl = URL_ABOUT;
         HTTPServer.mode = HTTPServer.ServerMode.SUPPORT;
         String articleId = getArguments() == null ? null : getArguments().getString("articleId");
         if (Utils.isNullOrEmpty(theUrl)) throw new IllegalArgumentException("No url extra!");
@@ -201,5 +185,7 @@ public class FragmentSupport extends Fragment {
         super.onPause();
         Utils.hideKeyboard(getActivity());
     }
+
+
 
 }

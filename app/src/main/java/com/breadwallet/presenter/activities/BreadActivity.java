@@ -93,7 +93,9 @@ public class BreadActivity extends BRActivity implements BRWalletManager.OnBalan
 
     private LinearLayout sendButton;
     private LinearLayout receiveButton;
+    private ImageButton payButton;
     private LinearLayout menuButton;
+    private LinearLayout discoverButton;
     public static final Point screenParametersPoint = new Point();
 
     private NetworkChangeReceiver mNetworkStateReceiver;
@@ -159,8 +161,8 @@ public class BreadActivity extends BRActivity implements BRWalletManager.OnBalan
         setUpBarFlipper();
 
         BRAnimator.init(this);
-        primaryPrice.setTextSize(TypedValue.COMPLEX_UNIT_PX, t1Size);//make it the size it should be after animation to get the X
-        secondaryPrice.setTextSize(TypedValue.COMPLEX_UNIT_PX, t2Size);//make it the size it should be after animation to get the X
+        //primaryPrice.setTextSize(TypedValue.COMPLEX_UNIT_PX, t1Size);//make it the size it should be after animation to get the X
+       // secondaryPrice.setTextSize(TypedValue.COMPLEX_UNIT_PX, t2Size);//make it the size it should be after animation to get the X
 
         if (introSetPitActivity != null) introSetPitActivity.finish();
         if (introActivity != null) introActivity.finish();
@@ -194,6 +196,17 @@ public class BreadActivity extends BRActivity implements BRWalletManager.OnBalan
     }
 
     private void setListeners() {
+        payButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!BRAnimator.isClickAllowed()) return;
+                BRAnimator.showSendFragment(BreadActivity.this, null);
+                BRAnimator.openScanner(BreadActivity.this, BRConstants.SCANNER_REQUEST);
+
+            }
+        });
+
+
         sendButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -209,6 +222,18 @@ public class BreadActivity extends BRActivity implements BRWalletManager.OnBalan
             public void onClick(View v) {
                 if (!BRAnimator.isClickAllowed()) return;
                 BRAnimator.showReceiveFragment(BreadActivity.this, true);
+            }
+        });
+
+        discoverButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!BRAnimator.isClickAllowed()) return;
+              //  BRAnimator.showMenuFragment(BreadActivity.this);
+               // WebView view = new WebView(BreadActivity.this);
+               // view.loadUrl(HTTPServer.URL_DISCOVER);
+                BRAnimator.showDiscoverFragment(BreadActivity.this, null);
+
             }
         });
 
@@ -270,8 +295,8 @@ public class BreadActivity extends BRActivity implements BRWalletManager.OnBalan
     }
 
     private void setPriceTags(boolean btcPreferred, boolean animate) {
-        secondaryPrice.setTextSize(!btcPreferred ? t1Size : t2Size);
-        primaryPrice.setTextSize(!btcPreferred ? t2Size : t1Size);
+       // secondaryPrice.setTextSize(!btcPreferred ? t1Size : t2Size);
+        //primaryPrice.setTextSize(!btcPreferred ? t2Size : t1Size);
         ConstraintSet set = new ConstraintSet();
         set.clone(toolBarConstraintLayout);
         if (animate)
@@ -279,11 +304,11 @@ public class BreadActivity extends BRActivity implements BRWalletManager.OnBalan
         int px4 = Utils.getPixelsFromDps(this, 4);
         int px16 = Utils.getPixelsFromDps(this, 16);
         //align to parent left
-        set.connect(!btcPreferred ? R.id.secondary_price : R.id.primary_price, ConstraintSet.START, ConstraintSet.PARENT_ID, ConstraintSet.END, px16);
+      //  set.connect(!btcPreferred ? R.id.secondary_price : R.id.primary_price, ConstraintSet.START, ConstraintSet.PARENT_ID, ConstraintSet.END, px16);
         //align equals after the first item
-        set.connect(R.id.equals, ConstraintSet.START, !btcPreferred ? secondaryPrice.getId() : primaryPrice.getId(), ConstraintSet.END, px4);
+      //  set.connect(R.id.equals, ConstraintSet.START, !btcPreferred ? secondaryPrice.getId() : primaryPrice.getId(), ConstraintSet.END, px4);
         //align second item after equals
-        set.connect(!btcPreferred ? R.id.primary_price : R.id.secondary_price, ConstraintSet.START, equals.getId(), ConstraintSet.END, px4);
+        //set.connect(!btcPreferred ? R.id.primary_price : R.id.secondary_price, ConstraintSet.START, equals.getId(), ConstraintSet.END, px4);
 //        align the second item to the baseline of the first
 //        set.connect(!btcPreferred ? R.id.primary_price : R.id.secondary_price, ConstraintSet.BASELINE, btcPreferred ? R.id.primary_price : R.id.secondary_price, ConstraintSet.BASELINE, 0);
         // Apply the changes
@@ -381,9 +406,11 @@ public class BreadActivity extends BRActivity implements BRWalletManager.OnBalan
     private void initializeViews() {
         sendButton = (LinearLayout) findViewById(R.id.send_layout);
         receiveButton = (LinearLayout) findViewById(R.id.receive_layout);
+        payButton = (ImageButton) findViewById(R.id.payButton);
         manageText = (TextView) findViewById(R.id.manage_text);
-        walletName = (TextView) findViewById(R.id.wallet_name_text);
+     //   walletName = (TextView) findViewById(R.id.wallet_name_text);
         menuButton = (LinearLayout) findViewById(R.id.menu_layout);
+        discoverButton = (LinearLayout) findViewById(R.id.discoverButton);
         primaryPrice = (TextView) findViewById(R.id.primary_price);
         secondaryPrice = (TextView) findViewById(R.id.secondary_price);
         equals = (TextView) findViewById(R.id.equals);
@@ -483,7 +510,7 @@ public class BreadActivity extends BRActivity implements BRWalletManager.OnBalan
 //                        boolean preferredBtc = BRSharedPrefs.getPreferredBTC(BreadActivity.this);
 //                        if (!isSwapped) {
                         primaryPrice.setText(formattedBTCAmount);
-                        secondaryPrice.setText(String.format("%s", formattedCurAmount));
+                        secondaryPrice.setText("  "+String.format("%s", formattedCurAmount));
 //                        } else {
 //                            primaryPrice.setText(String.format(" = %s", preferredBtc ? formattedCurAmount : formattedBTCAmount));
 //                            secondaryPrice.setText((preferredBtc ? formattedBTCAmount : formattedCurAmount));

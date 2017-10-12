@@ -1,10 +1,15 @@
 package com.breadwallet.presenter.activities.settings;
 
+import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.ImageButton;
+
 import android.widget.TextView;
 
 import com.breadwallet.R;
@@ -21,7 +26,7 @@ public class AboutActivity extends BRActivity {
 
     private ImageView redditShare;
     private ImageView twitterShare;
-    private ImageView blogShare;
+    private ImageButton blogShare;
     private static AboutActivity app;
 
     public static AboutActivity getApp() {
@@ -55,10 +60,39 @@ public class AboutActivity extends BRActivity {
 
         redditShare = (ImageView) findViewById(R.id.reddit_share_button);
         twitterShare = (ImageView) findViewById(R.id.twitter_share_button);
-        blogShare = (ImageView) findViewById(R.id.blog_share_button);
+        blogShare = (ImageButton) findViewById(R.id.blog_share_button);
 
+        twitterShare.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(Uri.parse("https://twitter.com/unitwallet"));
+                startActivity(i);
+
+            }
+        });
+        redditShare.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(Uri.parse( "https://www.yours.org/user/unitco"));
+                startActivity(i);
+
+            }
+        });
+
+        blogShare.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(Uri.parse("http://www.unitwallet.co"));
+                startActivity(i);
+
+            }
+        });
 
     }
+
 
     @Override
     protected void onResume() {

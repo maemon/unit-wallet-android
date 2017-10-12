@@ -15,6 +15,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.breadwallet.R;
+import com.breadwallet.presenter.activities.BreadActivity;
 import com.breadwallet.presenter.activities.util.ActivityUTILS;
 import com.breadwallet.presenter.activities.ImportActivity;
 import com.breadwallet.presenter.activities.RestoreActivity;
@@ -43,6 +44,7 @@ public class SettingsActivity extends BRActivity {
     public static SettingsActivity getApp() {
         return app;
     }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -197,16 +199,16 @@ public class SettingsActivity extends BRActivity {
             }
         }, false));
 
-        items.add(new BRSettingsItem("Bread", "", null, true));
+        items.add(new BRSettingsItem("Unit", "", null, true));
 
-        items.add(new BRSettingsItem(getString(R.string.Settings_shareData), "", new View.OnClickListener() {
+       /* items.add(new BRSettingsItem(getString(R.string.Settings_shareData), "", new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(SettingsActivity.this, ShareDataActivity.class);
                 startActivity(intent);
                 overridePendingTransition(R.anim.enter_from_right, R.anim.exit_to_left);
             }
-        }, false));
+        }, false));*/
         boolean eaEnabled = APIClient.getInstance(this).isFeatureEnabled(APIClient.FeatureFlags.EARLY_ACCESS.toString());
         if (eaEnabled)
             items.add(new BRSettingsItem(getString(R.string.Settings_earlyAccess), "", new View.OnClickListener() {
@@ -222,9 +224,8 @@ public class SettingsActivity extends BRActivity {
         items.add(new BRSettingsItem(getString(R.string.Settings_about), "", new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(SettingsActivity.this, AboutActivity.class);
-                startActivity(intent);
-                overridePendingTransition(R.anim.enter_from_right, R.anim.exit_to_left);
+                BRAnimator.showAboutFragment(app, null);
+
             }
         }, false));
         items.add(new BRSettingsItem("", "", null, true));

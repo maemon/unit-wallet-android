@@ -557,6 +557,7 @@ public class BRWalletManager {
                 fee = BRConstants.DEFAULT_FEE_PER_KB;
                 BREventManager.getInstance().pushEvent("wallet.didUseDefaultFeePerKB");
             }
+			Log.e("aaa", Float.toString(fee));
             BRWalletManager.getInstance().setFeePerKb(fee, isEconomyFee);
         }
 

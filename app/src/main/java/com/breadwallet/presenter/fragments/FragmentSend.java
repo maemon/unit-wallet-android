@@ -282,6 +282,7 @@ public class FragmentSend extends Fragment {
                     final Activity app = getActivity();
                     if (app == null) {
                         Log.e(TAG, "paste onClick: app is null");
+
                         return;
                     }
                     new Thread(new Runnable() {
@@ -557,6 +558,7 @@ public class FragmentSend extends Fragment {
             if ((currAmount.contains(".") && (currAmount.length() - currAmount.indexOf(".") > BRCurrency.getMaxDecimalPlaces(iso))))
                 return;
             amountBuilder.append(dig);
+
             updateText();
         }
     }
@@ -593,6 +595,7 @@ public class FragmentSend extends Fragment {
         String formattedBalance = BRCurrency.getFormattedCurrencyString(getActivity(), iso, balanceForISO);
         //Balance depending on ISO
         long fee = curBalance == 0 ? 0 : BRWalletManager.getInstance().feeForTransactionAmount(curBalance);
+
         BigDecimal feeForISO = BRExchange.getAmountFromSatoshis(getActivity(), iso, new BigDecimal(curBalance == 0 ? 0 : fee));
         //formattedBalance
         String aproxFee = BRCurrency.getFormattedCurrencyString(getActivity(), iso, feeForISO);

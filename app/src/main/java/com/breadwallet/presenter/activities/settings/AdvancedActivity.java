@@ -133,7 +133,7 @@ public class AdvancedActivity extends BRActivity {
 
             }
         }, false));
-        items.add(new BRSettingsItem(getString(R.string.BCH_title), "", new View.OnClickListener() {
+    /*    items.add(new BRSettingsItem(getString(R.string.BCH_title), "", new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(AdvancedActivity.this, WithdrawBchActivity.class);
@@ -142,7 +142,7 @@ public class AdvancedActivity extends BRActivity {
             }
         }, false));
 
-
+*/
     }
 
     @Override
