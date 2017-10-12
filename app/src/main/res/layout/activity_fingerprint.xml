@@ -39,7 +39,7 @@
                 android:text="@string/Fingerprint.Android"
                 android:textColor="@color/white"
                 android:textSize="18sp"
-                app:customFont="CircularPro-Bold.otf"/>
+                app:customFont="HelveticaNeue.ttf"/>
 
             <ImageButton
                 android:id="@+id/imageButton3"
@@ -48,7 +48,7 @@
                 android:layout_alignParentEnd="true"
                 android:layout_margin="@dimen/bread_margin"
                 android:background="@drawable/faq_question_white"
-                />
+                android:visibility="gone" />
 
 
         </RelativeLayout>
@@ -84,7 +84,7 @@
         android:text="@string/Fingerprint.enable.Android"
         android:textColor="@color/almost_black"
         android:textSize="16sp"
-        app:customFont="CircularPro-Bold.otf"/>
+        app:customFont="HelveticaNeue.ttf"/>
 
     <ToggleButton
         android:id="@+id/toggleButton"

@@ -94,7 +94,7 @@
             android:text="@string/Settings.wipe"
             android:textColor="@color/white"
             android:textSize="20sp"
-            app:customFont="CircularPro-Bold.otf"
+            app:customFont="HelveticaNeue.ttf"
             tools:layout_constraintTop_creator="1"/>
 
         <ImageView
@@ -114,7 +114,8 @@
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="15dp"
             android:background="@drawable/faq_question_white"
-            android:scaleType="centerCrop"/>
+            android:scaleType="centerCrop"
+            android:visibility="gone" />
 
         <ImageButton
             android:id="@+id/close_button"

@@ -9,19 +9,24 @@
     android:background="@drawable/bread_gradient"
     tools:context="com.breadwallet.presenter.activities.PinActivity">
 
-    <com.breadwallet.presenter.customviews.BRText
-        android:id="@+id/title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
-        android:gravity="center_horizontal"
-        android:text="@string/App.name.Android"
-        android:textColor="@color/white"
-        android:textSize="48sp"
-        app:customFont="Celevenia.otf"
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="259dp"
+        android:layout_height="108dp"
+        android:layout_marginLeft="8dp"
+
+
+        android:layout_weight="1"
+        android:adjustViewBounds="true"
+        android:cropToPadding="true"
+        android:src="@drawable/logog"
+        app:layout_constraintHorizontal_bias="0.481"
         app:layout_constraintBottom_toTopOf="@+id/unlocked_text"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"/>
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginBottom="22dp"
+        tools:layout_editor_absoluteY="40dp" />
 
     <LinearLayout
         android:id="@+id/pinLayout"
@@ -87,12 +92,12 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:text="@string/UnlockScreen.subheader"
-        android:textColor="@color/almost_black"
+        android:textColor="@color/common_google_signin_btn_text_dark_pressed"
         android:textSize="18sp"
-        app:customFont="CircularPro-Book.otf"
+        app:customFont="HelveticaNeue.ttf"
         app:layout_constraintBottom_toTopOf="@+id/pinLayout"
         app:layout_constraintLeft_toLeftOf="@+id/pinLayout"
-        app:layout_constraintRight_toRightOf="@+id/pinLayout"/>
+        app:layout_constraintRight_toRightOf="@+id/pinLayout" />
 
     <LinearLayout
         android:id="@+id/buttons_layout"
@@ -121,7 +126,7 @@
             android:text="@string/UnlockScreen.myAddress"
             android:textColor="@color/white"
             android:textSize="14sp"
-            app:customFont="CircularPro-Medium.otf"
+            app:customFont="HelveticaNeue.ttf"
             app:isBreadButton="false"
             />
 
@@ -136,7 +141,7 @@
             android:text="@string/UnlockScreen.scan"
             android:textColor="@color/white"
             android:textSize="14sp"
-            app:customFont="CircularPro-Medium.otf"
+            app:customFont="HelveticaNeue.ttf"
             />
     </LinearLayout>
 
@@ -166,7 +171,7 @@
         android:text="@string/UnlockScreen.unlocked"
         android:textColor="@color/white"
         android:textSize="18sp"
-        app:customFont="CircularPro-Book.otf"
+        app:customFont="HelveticaNeue.ttf"
         app:layout_constraintBottom_toTopOf="@+id/unlocked_image"
         app:layout_constraintHorizontal_bias="0.461"
         app:layout_constraintLeft_toLeftOf="@+id/unlocked_image"

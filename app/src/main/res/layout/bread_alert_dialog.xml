@@ -35,7 +35,7 @@
             android:layout_weight="0.4"
             android:textAlignment="center"
             android:textSize="22sp"
-            app:customFont="CircularPro-Bold.otf"/>
+            app:customFont="HelveticaNeue.ttf"/>
 
     </LinearLayout>
 
