@@ -291,7 +291,7 @@ public class APIClient {
         if (retryCount > 1)
             throw new RuntimeException("sendRequest: Warning retryCount is: " + retryCount);
         boolean isTestVersion = BREAD_POINT.contains("staging");
-        boolean isTestNet = BuildConfig.BITCOIN_TESTNET;
+        boolean isTestNet = false;
         String lang = getCurrentLocale(ctx);
         Request request = locRequest.newBuilder().header("X-Testflight", isTestVersion ? "true" : "false").header("X-Bitcoin-Testnet", isTestNet ? "true" : "false").header("Accept-Language", lang).build();
         if (needsAuth) {
@@ -481,6 +481,7 @@ public class APIClient {
         }
         String respBody;
         respBody = response;
+		Log.e("reply1", response);
         try {
             JSONObject versionsJson = new JSONObject(respBody);
             JSONArray jsonArray = versionsJson.getJSONArray("versions");

@@ -65,6 +65,12 @@ public class HTTPServer {
     public static final String URL_EA = "http://localhost:" + PORT + "/ea";
     public static final String URL_BUY = "http://localhost:" + PORT + "/buy";
     public static final String URL_SUPPORT = "http://localhost:" + PORT + "/support";
+	    public static final String URL_UNIT_SUPPORT = "http://www.unitwallet.co/contact";
+
+	public static final String URL_DISCOVER = "http://unitwallet.co/discover";
+	public static final String URL_ABOUT = "https://www.unitwallet.co/about/";
+
+
     public static ServerMode mode;
 
     public enum ServerMode {
