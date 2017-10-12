@@ -90,7 +90,7 @@ public class BRExchange {
             int unit = BRSharedPrefs.getCurrencyUnit(app);
             switch (unit) {
                 case CURRENT_UNIT_BITS:
-                    currencySymbolString = BRConstants.bitcoinLowercase;
+                    currencySymbolString = BRConstants.bitcoinLowercase +"ch ";
 //                        decimalPoints = 2;
 //                    if (getNumberOfDecimalPlaces(result.toPlainString()) == 1)
 //                        currencyFormat.setMinimumFractionDigits(1);
@@ -99,7 +99,7 @@ public class BRExchange {
                     currencySymbolString = "m" + BRConstants.bitcoinUppercase;
                     break;
                 case BRConstants.CURRENT_UNIT_BITCOINS:
-                    currencySymbolString = BRConstants.bitcoinUppercase;
+                    currencySymbolString = "BCH ";
                     break;
             }
         }

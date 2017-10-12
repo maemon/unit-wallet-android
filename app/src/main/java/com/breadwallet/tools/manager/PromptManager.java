@@ -151,20 +151,7 @@ public class PromptManager {
                         }).start();
                     }
                 });
-            case SHARE_DATA:
-                return new PromptInfo("Share Anonymous Data", "Help improve Bread by sharing your anonymous data with us", new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        new Thread(new Runnable() {
-                            @Override
-                            public void run() {
-                                Intent intent = new Intent(app, ShareDataActivity.class);
-                                app.startActivity(intent);
-                                app.overridePendingTransition(R.anim.enter_from_right, R.anim.exit_to_left);
-                            }
-                        }).start();
-                    }
-                });
+
 
         }
         return null;

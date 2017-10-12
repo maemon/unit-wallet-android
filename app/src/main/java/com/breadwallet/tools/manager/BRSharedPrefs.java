@@ -146,6 +146,7 @@ public class BRSharedPrefs {
 
     public static long getFeePerKb(Context context) {
         SharedPreferences prefs = context.getSharedPreferences(BRConstants.PREFS_NAME, Context.MODE_PRIVATE);
+		Log.e("fpbk", Long.toString(prefs.getLong(BRConstants.FEE_KB_PREFS, 0)));
         return prefs.getLong(BRConstants.FEE_KB_PREFS, 0);
     }
 
@@ -338,7 +339,7 @@ public class BRSharedPrefs {
 
     public static int getCurrencyUnit(Context context) {
         SharedPreferences settingsToGet = context.getSharedPreferences(BRConstants.PREFS_NAME, 0);
-        return settingsToGet.getInt(BRConstants.CURRENT_UNIT, BRConstants.CURRENT_UNIT_BITS);
+        return settingsToGet.getInt(BRConstants.CURRENT_UNIT, BRConstants.CURRENT_UNIT_BITCOINS);
     }
 
     public static void putCurrencyUnit(Context context, int unit) {

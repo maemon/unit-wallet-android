@@ -101,7 +101,8 @@ public class BRCurrency {
             } catch (IllegalArgumentException e) {
                 currency = Currency.getInstance(Locale.getDefault());
             }
-            symbol = currency.getSymbol();
+            symbol = isoCurrencyCode;
+           // symbol = currency.getSymbol();
 //            decimalPoints = currency.getDefaultFractionDigits();
         }
         decimalFormatSymbols.setCurrencySymbol(symbol);
@@ -109,8 +110,10 @@ public class BRCurrency {
         currencyFormat.setGroupingUsed(true);
         currencyFormat.setMaximumFractionDigits(BRSharedPrefs.getCurrencyUnit(app) == BRConstants.CURRENT_UNIT_BITCOINS ? 8 : 2);
         currencyFormat.setDecimalFormatSymbols(decimalFormatSymbols);
-        currencyFormat.setNegativePrefix(decimalFormatSymbols.getCurrencySymbol() + "-");
+        currencyFormat.setPositiveSuffix(" " + decimalFormatSymbols.getCurrencySymbol());
+        currencyFormat.setNegativePrefix(decimalFormatSymbols.getCurrencySymbol());
         currencyFormat.setNegativeSuffix("");
+        currencyFormat.setPositivePrefix("");
         return currencyFormat.format(amount.doubleValue());
     }
 
@@ -131,10 +134,10 @@ public class BRCurrency {
                         currencySymbolString = BRConstants.bitcoinLowercase;
                         break;
                     case BRConstants.CURRENT_UNIT_MBITS:
-                        currencySymbolString = "m" + BRConstants.bitcoinUppercase;
+                        currencySymbolString = BRConstants.bitcoinUppercase;
                         break;
                     case BRConstants.CURRENT_UNIT_BITCOINS:
-                        currencySymbolString = BRConstants.bitcoinUppercase;
+                        currencySymbolString = "BCH";
                         break;
                 }
             }
@@ -162,7 +165,7 @@ public class BRCurrency {
                     case BRConstants.CURRENT_UNIT_MBITS:
                         return "MBits";
                     case BRConstants.CURRENT_UNIT_BITCOINS:
-                        return "BTC";
+                        return "BCH";
                 }
             }
         }
