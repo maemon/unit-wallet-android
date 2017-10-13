@@ -158,7 +158,8 @@ public class SettingsActivity extends BRActivity {
 
             }
         }, false));
-
+//Disabled due to issues with high value wallets and fingerprint reading
+        /*
         if (AuthManager.isFingerPrintAvailableAndSetup(this)) {
             items.add(new BRSettingsItem(getString(R.string.Settings_fingerprintLimit_Android), "", new View.OnClickListener() {
                 @Override
@@ -179,7 +180,7 @@ public class SettingsActivity extends BRActivity {
 
                 }
             }, false));
-        }
+        }*/
 
         items.add(new BRSettingsItem(getString(R.string.Settings_currency), BRSharedPrefs.getIso(this), new View.OnClickListener() {
             @Override
