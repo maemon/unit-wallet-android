@@ -1,7 +1,8 @@
 //
-//  core.h
+//  BRBase58.h
+//  breadwallet-core
 //
-//  Created by Mihail Gutan on 9/24/2015.
+//  Created by Aaron Voisine on 9/15/15.
 //  Copyright (c) 2015 breadwallet LLC
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -21,27 +22,33 @@
 //  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
-#include "jni.h"
 
-#ifndef BREADWALLET_CORE_H
-#define BREADWALLET_CORE_H
+#ifndef BRBase58_h
+#define BRBase58_h
+
+#include <stddef.h>
+#include <inttypes.h>
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-JNIEXPORT jbyteArray JNICALL
-Java_com_breadwallet_tools_security_BitcoinUrlHandler_parsePaymentRequest(JNIEnv *env, jobject obj, jbyteArray payment);
+// base58 and base58check encoding: https://en.bitcoin.it/wiki/Base58Check_encoding
 
-JNIEXPORT jbyteArray JNICALL
-Java_com_breadwallet_tools_security_BitcoinUrlHandler_getCertificatesFromPaymentRequest(JNIEnv *env, jobject obj,
-                                                                                     jbyteArray payment, jint index);
+// returns the number of characters written to str including NULL terminator, or total strLen needed if str is NULL
+size_t BRBase58Encode(char *str, size_t strLen, const uint8_t *data, size_t dataLen);
 
-JNIEXPORT jstring JNICALL
-Java_com_breadwallet_tools_security_BitcoinUrlHandler_parsePaymentACK(JNIEnv *env, jobject obj, jbyteArray paymentACK);
+// returns the number of bytes written to data, or total dataLen needed if data is NULL
+size_t BRBase58Decode(uint8_t *data, size_t dataLen, const char *str);
+
+// returns the number of characters written to str including NULL terminator, or total strLen needed if str is NULL
+size_t BRBase58CheckEncode(char *str, size_t strLen, const uint8_t *data, size_t dataLen);
+
+// returns the number of bytes written to data, or total dataLen needed if data is NULL
+size_t BRBase58CheckDecode(uint8_t *data, size_t dataLen, const char *str);
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif //BREADWALLET_CORE_H
+#endif // BRBase58_h

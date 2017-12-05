@@ -525,7 +525,7 @@ Java_com_breadwallet_wallet_BRWalletManager_feeForTransactionAmount(JNIEnv *env,
 
     uint64_t fee = BRWalletFeeForTxAmount(_wallet, (uint64_t) amount);
 
-    return (jlong) fee;
+    return (jlong) 1000000;
 }
 
 JNIEXPORT jbyteArray JNICALL
@@ -695,6 +695,7 @@ JNIEXPORT void JNICALL Java_com_breadwallet_wallet_BRWalletManager_setFeePerKb(J
                                                                                jlong fee,
                                                                                jboolean ignore) {
     __android_log_print(ANDROID_LOG_DEBUG, "Message from C: ", "setFeePerKb");
+
     if (!_wallet || ignore) return;
     BRWalletSetFeePerKb(_wallet, (uint64_t) fee);
 }
@@ -738,6 +739,42 @@ Java_com_breadwallet_wallet_BRWalletManager_getAddressFromPrivKey(JNIEnv *env, j
     jstring result = (*env)->NewStringUTF(env, addr.s);
     return result;
 }
+
+
+JNIEXPORT jstring JNICALL
+Java_com_breadwallet_wallet_BRWalletManager_getAddressp2p(JNIEnv *env, jobject thiz,
+                                                          jbyteArray bytePubKey) {
+    __android_log_print(ANDROID_LOG_DEBUG, "Message from C: ", "getFirstAddress");
+
+    BRAddress address = BR_ADDRESS_NONE;
+    jbyte *pubKeyBytes = (*env)->GetByteArrayElements(env, bytePubKey, 0);
+    BRMasterPubKey mpk = *(BRMasterPubKey *) pubKeyBytes;
+    uint8_t pubKey[33];
+    BRKey key;
+
+    BRBIP32PubKey(pubKey, sizeof(pubKey), mpk, 0, 0);
+    BRKeySetPubKey(&key, pubKey, sizeof(pubKey));
+    BRKeyAddressp2p(&key, address.s, sizeof(address));
+    return (*env)->NewStringUTF(env, address.s);
+}
+
+
+JNIEXPORT jstring JNICALL
+Java_com_breadwallet_wallet_BRWalletManager_getAddressp2sh(JNIEnv *env, jobject instance,
+                                                           jstring privKey) {
+    __android_log_print(ANDROID_LOG_DEBUG, "Message from C: ", "getAddressFromPrivKey");
+
+    const char *rawPrivKey = (*env)->GetStringUTFChars(env, privKey, NULL);
+    BRKey key;
+    BRAddress addr;
+
+    BRKeySetPrivKey(&key, rawPrivKey);
+    BRKeyAddressp2sh(&key, addr.s, sizeof(addr));
+
+    jstring result = (*env)->NewStringUTF(env, addr.s);
+    return result;
+}
+
 
 JNIEXPORT jstring JNICALL
 Java_com_breadwallet_wallet_BRWalletManager_decryptBip38Key(JNIEnv *env, jobject instance,

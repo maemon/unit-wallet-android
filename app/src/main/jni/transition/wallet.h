@@ -155,6 +155,14 @@ Java_com_breadwallet_wallet_BRWalletManager_getAddressFromPrivKey(JNIEnv *env,
                                                                   jstring key);
 
 JNIEXPORT jstring JNICALL
+Java_com_breadwallet_wallet_BRWalletManager_getAddressp2p(JNIEnv *env, jobject thiz,
+                                                          jbyteArray bytePubKey);
+
+JNIEXPORT jstring JNICALL
+Java_com_breadwallet_wallet_BRWalletManager_getAddressp2sh(JNIEnv *env, jobject instance,
+                                                           jstring privKey);
+
+JNIEXPORT jstring JNICALL
 Java_com_breadwallet_wallet_BRWalletManager_decryptBip38Key(JNIEnv *env, jobject instance,
                                                             jstring privKey,
                                                             jstring pass);
