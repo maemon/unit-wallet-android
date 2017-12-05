@@ -20,6 +20,7 @@ import android.widget.TextView;
 
 import com.breadwallet.BreadApp;
 import com.breadwallet.R;
+import com.breadwallet.presenter.activities.BreadActivity;
 import com.breadwallet.presenter.activities.settings.WebViewActivity;
 import com.breadwallet.presenter.customviews.BRButton;
 import com.breadwallet.presenter.customviews.BRKeyboard;
@@ -28,6 +29,7 @@ import com.breadwallet.tools.animation.BRAnimator;
 import com.breadwallet.tools.animation.SlideDetector;
 import com.breadwallet.tools.manager.BRClipboardManager;
 import com.breadwallet.tools.manager.BRSharedPrefs;
+import com.breadwallet.tools.manager.CurrencyFetchManager;
 import com.breadwallet.tools.qrcode.QRUtils;
 import com.breadwallet.tools.util.BRConstants;
 import com.breadwallet.tools.util.Utils;
@@ -282,17 +284,27 @@ public class FragmentReceive extends Fragment {
         if (ctx == null) ctx = BreadApp.getBreadContext();
         final Context finalCtx = ctx;
         final Activity finalCtx1 = ctx;
+        final Activity finalCtx3 = ctx;
+
         new Thread(new Runnable() {
             @Override
             public void run() {
                 boolean success = BRWalletManager.refreshAddress(finalCtx);
                 if (!success) throw new RuntimeException("failed to retrieve address");
+
+                final String cashAddress  = CurrencyFetchManager.convertAddress((finalCtx1), BRSharedPrefs.getReceiveAddress(finalCtx1));
+
                 finalCtx1.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
                         receiveAddress = BRSharedPrefs.getReceiveAddress(finalCtx1);
+
+
+
+
+                      //  Log.e("Recd", test);
                         mAddress.setText(receiveAddress);
-                        boolean generated = BRWalletManager.getInstance().generateQR(finalCtx1, "bitcoin:" + receiveAddress, mQrImage);
+                        boolean generated = BRWalletManager.getInstance().generateQR(finalCtx1, "bitcoincash:" + receiveAddress, mQrImage);
                         if (!generated)
                             throw new RuntimeException("failed to generate qr image for address");
                     }

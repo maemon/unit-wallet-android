@@ -158,7 +158,7 @@ public class SettingsActivity extends BRActivity {
 
             }
         }, false));
-
+//Disabled due to high crashing with high value wallets! Will look into later
         if (AuthManager.isFingerPrintAvailableAndSetup(this)) {
             items.add(new BRSettingsItem(getString(R.string.Settings_fingerprintLimit_Android), "", new View.OnClickListener() {
                 @Override

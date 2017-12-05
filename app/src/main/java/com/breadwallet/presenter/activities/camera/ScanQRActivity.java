@@ -1,6 +1,7 @@
 package com.breadwallet.presenter.activities.camera;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -14,6 +15,7 @@ import com.breadwallet.R;
 import com.breadwallet.presenter.activities.util.ActivityUTILS;
 import com.breadwallet.presenter.activities.util.BRActivity;
 import com.breadwallet.tools.animation.SpringAnimator;
+import com.breadwallet.tools.manager.CurrencyFetchManager;
 import com.breadwallet.tools.qrcode.QRReader;
 import com.breadwallet.tools.security.BitcoinUrlHandler;
 import com.platform.tools.BRBitId;
@@ -56,6 +58,7 @@ public class ScanQRActivity extends BRActivity {
     public static boolean appVisible = false;
     private static ScanQRActivity app;
 
+
     public static ScanQRActivity getApp() {
         return app;
     }
@@ -78,8 +81,49 @@ public class ScanQRActivity extends BRActivity {
 
         qrEader = new QRReader.Builder(this, mySurfaceView, new QRReader.OnQrFoundListener() {
             @Override
-            public void onDetected(final String data) {
+            public void onDetected(final String theString) {
+
                 if (handlingCode) return;
+				String interData = "";
+
+                //Following conventions for bitcoincash urls, lazy string manipulation, if it ain't broke, don't fix it!
+                if (theString.contains("bitcoincash:")){
+                    if (theString.charAt(12) == 'C' || theString.charAt(12) == 'H') {
+                        String bchString = theString.substring(12);
+
+                        String convertedBTCAddress = CurrencyFetchManager.convertAddress(ScanQRActivity.this, bchString);
+
+                        interData = "bitcoin:" + convertedBTCAddress;
+
+
+                    }
+                    else if (theString.charAt(12) == '1' || theString.charAt(12) == '1'){
+
+                        interData = "bitcoin:" + theString.substring(12);
+
+                    }
+
+                    else {
+                        interData = theString;
+                    }
+                }
+				 else if (theString.charAt(8) == 'C' || theString.charAt(8) == 'H') {
+            String bchString = theString.substring(8);
+
+                     String convertedBTCAddress = CurrencyFetchManager.convertAddress(ScanQRActivity.this, bchString);
+
+                     interData = "bitcoin:" + convertedBTCAddress;
+
+        }
+
+        else {
+                     interData = theString;
+                 }
+		final String data = interData;
+				
+				
+				
+
                 if (BitcoinUrlHandler.isBitcoinUrl(data) || BRBitId.isBitId(data)) {
                     runOnUiThread(new Runnable() {
                         @Override

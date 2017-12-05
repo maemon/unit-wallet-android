@@ -172,6 +172,8 @@ public class IntroActivity extends BRActivity implements Serializable {
     public boolean checkFirstAddress(byte[] mpk) {
         String addressFromPrefs = BRSharedPrefs.getFirstAddress(this);
         String generatedAddress = BRWalletManager.getFirstAddress(mpk);
+        String idk = "1FfmbHfnpaZjKFvyi1okTjJJusN455paPH";
+        Log.e("aaaQ", mpk.toString());
         if (!addressFromPrefs.equalsIgnoreCase(generatedAddress) && addressFromPrefs.length() != 0 && generatedAddress.length() != 0) {
             Log.e(TAG, "checkFirstAddress: WARNING, addresses don't match: Prefs:" + addressFromPrefs + ", gen:" + generatedAddress);
         }

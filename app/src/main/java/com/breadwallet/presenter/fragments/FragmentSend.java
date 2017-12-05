@@ -2,6 +2,7 @@ package com.breadwallet.presenter.fragments;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -28,8 +29,12 @@ import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import com.breadwallet.BreadApp;
 import com.breadwallet.R;
+import com.breadwallet.presenter.activities.BreadActivity;
 import com.breadwallet.presenter.activities.settings.WebViewActivity;
+import com.breadwallet.presenter.activities.util.ActivityUTILS;
+import com.breadwallet.presenter.activities.util.BRActivity;
 import com.breadwallet.presenter.customviews.BRButton;
 import com.breadwallet.presenter.customviews.BRDialogView;
 import com.breadwallet.presenter.customviews.BRKeyboard;
@@ -43,6 +48,8 @@ import com.breadwallet.tools.animation.SlideDetector;
 import com.breadwallet.tools.animation.SpringAnimator;
 import com.breadwallet.tools.manager.BRClipboardManager;
 import com.breadwallet.tools.manager.BRSharedPrefs;
+import com.breadwallet.tools.manager.CurrencyFetchManager;
+
 import com.breadwallet.tools.security.BitcoinUrlHandler;
 import com.breadwallet.tools.security.BRSender;
 import com.breadwallet.tools.util.BRConstants;
@@ -51,7 +58,18 @@ import com.breadwallet.tools.util.BRCurrency;
 import com.breadwallet.tools.util.Utils;
 import com.breadwallet.wallet.BRWalletManager;
 
+import junit.framework.Assert;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.math.BigDecimal;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.nio.charset.Charset;
+import java.util.Date;
 
 import static com.breadwallet.tools.security.BitcoinUrlHandler.getRequestFromString;
 import static com.platform.HTTPServer.URL_SUPPORT;
@@ -102,6 +120,7 @@ public class FragmentSend extends Fragment {
     private String selectedIso;
     private Button isoButton;
     private int keyboardIndex;
+
     private LinearLayout keyboardLayout;
     private ImageButton close;
     private ConstraintLayout amountLayout;
@@ -116,6 +135,9 @@ public class FragmentSend extends Fragment {
     @Override
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        //Log.e("computed", computedAddress);
+
+
 
         View rootView = inflater.inflate(R.layout.fragment_send, container, false);
         backgroundLayout = (ScrollView) rootView.findViewById(R.id.background_layout);
@@ -257,11 +279,41 @@ public class FragmentSend extends Fragment {
             }
         });
 
+/*        String preComputedUrl = BRClipboardManager.getClipboard(getActivity());
+String bcTest = "";
+        if (preComputedUrl.charAt(0) == 'C' || preComputedUrl.charAt(0) == 'H'){ //Converts BCH addresses into BTC addresses before checking data
+            bcTest = CurrencyFetchManager.convertAddress(BreadApp.getBreadContext(), preComputedUrl);
+            	// Log.e("btcUr", bcTest);
+
+        }
+*/
+        Activity ctx = (Activity) getContext();
+        if (ctx == null) ctx = BreadApp.getBreadContext();
+        final Context finalCtx = ctx;
+        final Activity finalCtx1 = ctx;
+      //
+
         paste.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 if (!BRAnimator.isClickAllowed()) return;
-                String bitcoinUrl = BRClipboardManager.getClipboard(getActivity());
+				String bitcoinUrl = "";
+                Activity ctx = (Activity) getContext();
+                if (ctx == null) ctx = BreadApp.getBreadContext();
+                final Activity finalCtx = ctx;
+                String preComputedUrl = BRClipboardManager.getClipboard(getActivity());
+				if (preComputedUrl.charAt(0) == 'C' || preComputedUrl.charAt(0) == 'H'){ //Converts BCH addresses into BTC addresses before checking data
+                    Log.e("btcUr", "1"+preComputedUrl+"2");
+                    bitcoinUrl = convertAddress(getActivity(), preComputedUrl.toString());
+                    Log.e ("invalidCheck", bitcoinUrl);
+                }
+				
+				else{
+					
+										 bitcoinUrl = preComputedUrl;
+
+				}
                 if (Utils.isNullOrEmpty(bitcoinUrl) || !isInputValid(bitcoinUrl)) {
                     showClipboardError();
                     return;
@@ -275,16 +327,26 @@ public class FragmentSend extends Fragment {
                     return;
                 }
                 address = obj.address;
+								Log.e("pasted", address);
+
+                String computedAddress = address;
+                if (address.charAt(0) == 'C' || address.charAt(0) == 'H'){ //Converts BCH addresses into BTC addresses before checking data
+                    computedAddress = CurrencyFetchManager.convertAddress(getActivity(), address);
+
+                }
                 final BRWalletManager wm = BRWalletManager.getInstance();
 
-                if (BRWalletManager.validateAddress(address)) {
-                    final String finalAddress = address;
+                if (BRWalletManager.validateAddress(computedAddress)) {
+
+                    final String finalAddress = computedAddress;
+                    final String finalRecomputedAddress = address;
                     final Activity app = getActivity();
                     if (app == null) {
                         Log.e(TAG, "paste onClick: app is null");
 
                         return;
                     }
+
                     new Thread(new Runnable() {
                         @Override
                         public void run() {
@@ -310,7 +372,7 @@ public class FragmentSend extends Fragment {
                                             @Override
                                             public void onClick(BRDialogView brDialogView) {
                                                 brDialogView.dismiss();
-                                                addressEdit.setText(finalAddress);
+                                                addressEdit.setText(finalRecomputedAddress);
                                             }
                                         }, new BRDialogView.BROnClickListener() {
                                             @Override
@@ -325,7 +387,7 @@ public class FragmentSend extends Fragment {
                                 app.runOnUiThread(new Runnable() {
                                     @Override
                                     public void run() {
-                                        addressEdit.setText(finalAddress);
+                                        addressEdit.setText(finalRecomputedAddress);
 
                                     }
                                 });
@@ -361,16 +423,24 @@ public class FragmentSend extends Fragment {
 
             }
         });
+
         send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 //not allowed now
                 if (!BRAnimator.isClickAllowed()) {
                     return;
                 }
 
                 boolean allFilled = true;
-                String address = addressEdit.getText().toString();
+                String address = "";
+                String preAddress = addressEdit.getText().toString();
+             /*   if (preAddress.charAt(0) == 'C' || preAddress.charAt(0) == 'H')
+                    address = cashAddress;
+
+                else*/
+                    address = preAddress;
                 String amountStr = amountBuilder.toString();
                 String iso = selectedIso;
                 String comment = commentEdit.getText().toString();
@@ -596,7 +666,7 @@ public class FragmentSend extends Fragment {
         //Balance depending on ISO
         long fee = curBalance == 0 ? 0 : BRWalletManager.getInstance().feeForTransactionAmount(curBalance);
 
-        BigDecimal feeForISO = BRExchange.getAmountFromSatoshis(getActivity(), iso, new BigDecimal(curBalance == 0 ? 0 : fee));
+        BigDecimal feeForISO = BRExchange.getAmountFromSatoshis(getActivity(), iso, new BigDecimal(curBalance == 0 ? 0 : fee/100));
         //formattedBalance
         String aproxFee = BRCurrency.getFormattedCurrencyString(getActivity(), iso, feeForISO);
         if (new BigDecimal((tmpAmount.isEmpty() || tmpAmount.equalsIgnoreCase(".")) ? "0" : tmpAmount).doubleValue() > balanceForISO.doubleValue()) {
@@ -612,7 +682,7 @@ public class FragmentSend extends Fragment {
         }
         balanceString = String.format(getString(R.string.Send_balance), formattedBalance);
         balanceText.setText(String.format("%s", balanceString));
-        feeText.setText(String.format(getString(R.string.Send_fee), aproxFee));
+        feeText.setText(String.format(getString(R.string.Send_fee), aproxFee ));
 
     }
 
@@ -700,5 +770,65 @@ public class FragmentSend extends Fragment {
             showKeyboard(false);
         }
     }
+
+    public static String convertAddress(Activity activity, String address) {
+        String concated = "http://api.unitwallet.co/translateAddy/?addy=" + address;
+        String jsonString = callURL(activity, concated);
+Log.e ("concat", concated);
+        String resultAddy = "";
+        if (jsonString == null) return null;
+        try {
+            JSONObject obj = new JSONObject(jsonString);
+            resultAddy = obj.getString("resultAddress");
+            Log.e("hiMom", resultAddy);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return resultAddy;
+    }
+
+
+    private static String callURL(Context app, String myURL) {
+//        System.out.println("Requested URL_EA:" + myURL);
+        Log.e("requesteDUrl", myURL);
+        StringBuilder sb = new StringBuilder();
+        HttpURLConnection urlConn = null;
+        InputStreamReader in = null;
+        try {
+            URL url = new URL(myURL);
+            urlConn = (HttpURLConnection) url.openConnection();
+
+//            Log.e(TAG, "user agent: " + Utils.getAgentString(app, "android/HttpURLConnection"));
+            //  urlConn.setRequestProperty("User-agent", Utils.getAgentString(app, "android/HttpURLConnection"));
+            Log.e("btcUr", "Hi");
+
+            //urlConn.setReadTimeout(60 * 1000);
+
+          //  String strDate = urlConn.getHeaderField("date");
+            //   if (strDate == null || app == null) {
+
+
+
+            if (urlConn.getInputStream() != null) {
+                in = new InputStreamReader(urlConn.getInputStream(),
+                        Charset.defaultCharset());
+                BufferedReader bufferedReader = new BufferedReader(in);
+
+                int cp;
+                while ((cp = bufferedReader.read()) != -1) {
+                    sb.append((char) cp);
+                }
+                bufferedReader.close();
+            }
+            assert in != null;
+            in.close();
+        } catch (Exception e) {
+            return null;
+        }
+
+        return sb.toString();
+    }
+
 
 }

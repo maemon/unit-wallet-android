@@ -20,6 +20,7 @@ import com.breadwallet.tools.util.BRConstants;
 import com.breadwallet.tools.util.BRCurrency;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 
 public class DisplayCurrencyActivity extends BRActivity {
@@ -109,9 +110,15 @@ public class DisplayCurrencyActivity extends BRActivity {
         String iso = BRSharedPrefs.getIso(this);
         CurrencyEntity entity = CurrencyDataSource.getInstance(this).getCurrencyByIso(iso);
         if (entity != null) {
-            String finalExchangeRate = BRCurrency.getFormattedCurrencyString(DisplayCurrencyActivity.this, BRSharedPrefs.getIso(this), new BigDecimal(entity.rate));
+            float newRate = entity.rate;
+            BigDecimal bd = new BigDecimal(newRate);
+            BigDecimal res = bd.setScale(2, RoundingMode.HALF_UP);
+            newRate = res.floatValue();
+
+            String finalExchangeRate = BRCurrency.getFormattedCurrencyString(DisplayCurrencyActivity.this, BRSharedPrefs.getIso(this), new BigDecimal(newRate));
+
             boolean bits = BRSharedPrefs.getCurrencyUnit(this) == BRConstants.CURRENT_UNIT_BITS;
-            exchangeText.setText(BRCurrency.getFormattedCurrencyString(this, "BTC", new BigDecimal(bits ? 1000000 : 1)) + " = " + finalExchangeRate);
+            exchangeText.setText(BRCurrency.getFormattedCurrencyString(this, "BTC", new BigDecimal(bits ? 1000000 : 1)) + " = " + Float.toString(newRate));
         }
         adapter.notifyDataSetChanged();
     }
