@@ -40,6 +40,7 @@ import com.breadwallet.tools.animation.BRDialog;
 import com.breadwallet.tools.animation.SpringAnimator;
 import com.breadwallet.tools.manager.BREventManager;
 import com.breadwallet.tools.manager.BRSharedPrefs;
+import com.breadwallet.tools.manager.CurrencyFetchManager;
 import com.breadwallet.tools.qrcode.QRUtils;
 import com.breadwallet.tools.security.BRKeyStore;
 import com.breadwallet.tools.sqlite.MerkleBlockDataSource;
@@ -504,7 +505,7 @@ public class BRWalletManager {
 
     public void startTheWalletIfExists(final Activity app) {
         final BRWalletManager m = BRWalletManager.getInstance();
-        if (!m.isPasscodeEnabled(app)) {
+     /*   if (!m.isPasscodeEnabled(app)) {
             //Device passcode/password should be enabled for the app to work
             BRDialog.showCustomDialog(app, app.getString(R.string.JailbreakWarnings_title), app.getString(R.string.Warning_encryption_body_Android),
                     app.getString(R.string.AccessibilityLabels_close), null, new BRDialogView.BROnClickListener() {
@@ -518,12 +519,12 @@ public class BRWalletManager {
                             app.finish();
                         }
                     }, 0);
-        } else {
+        } else {*/
             if (!m.noWallet(app)) {
                 BRAnimator.startBreadActivity(app, true);
             }
 
-        }
+       // }
     }
 
     //BLOCKS
@@ -641,6 +642,16 @@ public class BRWalletManager {
 
     }
 
+    public static String getCashAddress(String address, Activity activity){
+
+        return CurrencyFetchManager.convertAddress(activity, address);
+
+
+
+
+    };
+
+
     private native byte[] encodeSeed(byte[] seed, String[] wordList);
 
     public native void createWallet(int transactionCount, byte[] pubkey);
@@ -698,6 +709,10 @@ public class BRWalletManager {
     public native boolean isValidBitcoinBIP38Key(String key);
 
     public native String getAddressFromPrivKey(String key);
+	
+    public native static String getAddressp2p(byte[] mpk);
+
+    public native String getAddressp2sh(String key);
 
     public native void createInputArray();
 

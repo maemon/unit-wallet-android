@@ -117,18 +117,21 @@ public class QRUtils {
         }
 
         Intent intent = new Intent(Intent.ACTION_SENDTO);
+		
         intent.setData(Uri.parse(via));
+			String recomposedURi = "bitcoincash:" + bitcoinUri.substring(8);
 
         if (via.equalsIgnoreCase("sms:")) {
-            intent.putExtra("sms_body", bitcoinUri);
+            intent.putExtra("sms_body", recomposedURi);
+
             intent.putExtra("exit_on_sent", true);
         } else {
-            intent.putExtra(Intent.EXTRA_SUBJECT, "Bitcoin Address");
-            intent.putExtra(Intent.EXTRA_TEXT, bitcoinUri);
+            intent.putExtra(Intent.EXTRA_SUBJECT, "Bitcoin Cash Address");
+            intent.putExtra(Intent.EXTRA_TEXT, recomposedURi);
         }
         if (uri != null)
-            intent.putExtra(Intent.EXTRA_STREAM, uri);
-        app.startActivity(Intent.createChooser(intent, "Bitcoin Address"));
+            intent.putExtra(Intent.EXTRA_STREAM, recomposedURi);
+        app.startActivity(Intent.createChooser(intent, "Bitcoin Cash Address"));
     }
 
     private static String saveToExternalStorage(Bitmap bitmapImage, Activity app) {

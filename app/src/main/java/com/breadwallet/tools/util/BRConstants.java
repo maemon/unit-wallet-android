@@ -63,7 +63,7 @@ public class BRConstants {
     public static final String SECURE_TIME_PREFS = "secureTime";
     public static final String PHRASE_WARNING_TIME = "phraseWarningTime";
     public static final String EXCHANGE_RATES = "exchangeRates";
-    public static final String FEE_KB_PREFS = "feeKb";
+    public static final String FEE_KB_PREFS = "1000";
     public static final String ECONOMY_FEE_KB_PREFS = "EconomyFeeKb";
     public static final String LITTLE_CIRCLE = "\u2022";
     public static String SUPPORT_EMAIL = "support@breadwallet.com";
@@ -85,6 +85,8 @@ public class BRConstants {
      */
     public static final String PREFS_NAME = "MyPrefsFile";
     public static final String RECEIVE_ADDRESS = "receive_address";
+	    public static final String CASH_ADDRESS = "cash_address";
+
     public static final String WALLET_NAME = "wallet_name";
     public static final String START_HEIGHT = "startHeight";
     public static final String LAST_BLOCK_HEIGHT = "lastBlockHeight";

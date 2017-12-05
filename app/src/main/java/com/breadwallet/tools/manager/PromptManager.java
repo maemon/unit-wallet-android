@@ -84,16 +84,16 @@ public class PromptManager {
     public boolean shouldPrompt(Context app, PromptItem item) {
         assert (app != null);
         switch (item) {
-            case FINGER_PRINT:
-                return !BRSharedPrefs.getUseFingerprint(app);
+           /* case FINGER_PRINT:
+                return !BRSharedPrefs.getUseFingerprint(app);*/
             case PAPER_KEY:
                 return !BRSharedPrefs.getPhraseWroteDown(app);
             case UPGRADE_PIN:
                 return BRKeyStore.getPinCode(app).length() != 6;
             case RECOMMEND_RESCAN:
                 return BRSharedPrefs.getScanRecommended(app);
-            case SHARE_DATA:
-                return !BRSharedPrefs.getShareData(app) && !BRSharedPrefs.getShareDataDismissed(app);
+           /* case SHARE_DATA:
+                return !BRSharedPrefs.getShareData(app) && !BRSharedPrefs.getShareDataDismissed(app);*/
 
         }
         return false;
@@ -103,14 +103,14 @@ public class PromptManager {
         if (shouldPrompt(app, RECOMMEND_RESCAN)) return RECOMMEND_RESCAN;
         if (shouldPrompt(app, UPGRADE_PIN)) return UPGRADE_PIN;
         if (shouldPrompt(app, PAPER_KEY)) return PAPER_KEY;
-        if (shouldPrompt(app, FINGER_PRINT)) return FINGER_PRINT;
-        if (shouldPrompt(app, SHARE_DATA)) return SHARE_DATA;
+      //  if (shouldPrompt(app, FINGER_PRINT)) return FINGER_PRINT;
+     //   if (shouldPrompt(app, SHARE_DATA)) return SHARE_DATA;
         return null;
     }
 
     public PromptInfo promptInfo(final Activity app, PromptItem item) {
         switch (item) {
-            case FINGER_PRINT:
+         /*   case FINGER_PRINT:
                 return new PromptInfo(app.getString(R.string.Prompts_Fingerprint_title_Android), app.getString(R.string.Prompts_Fingerprint_body_Android), new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -118,7 +118,7 @@ public class PromptManager {
                         app.startActivity(intent);
                         app.overridePendingTransition(R.anim.enter_from_right, R.anim.exit_to_left);
                     }
-                });
+                });*/
             case PAPER_KEY:
                 return new PromptInfo(app.getString(R.string.Prompts_PaperKey_title), app.getString(R.string.Prompts_PaperKey_body), new View.OnClickListener() {
                     @Override

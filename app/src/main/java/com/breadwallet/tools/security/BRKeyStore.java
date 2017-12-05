@@ -167,7 +167,7 @@ public class BRKeyStore {
                         KeyProperties.PURPOSE_ENCRYPT | KeyProperties.PURPOSE_DECRYPT)
                         .setBlockModes(BLOCK_MODE)
                         .setKeySize(256)
-                        .setUserAuthenticationRequired(auth_required)
+                        //.setUserAuthenticationRequired(auth_required)
                         .setUserAuthenticationValidityDurationSeconds(AUTH_DURATION_SEC)
                         .setRandomizedEncryptionRequired(false)
                         .setEncryptionPaddings(PADDING)
@@ -219,7 +219,7 @@ public class BRKeyStore {
             return true;
         } catch (UserNotAuthenticatedException e) {
             Log.d(TAG, "setData: User not Authenticated, requesting..." + alias + ", err(" + e.getMessage() + ")");
-            showAuthenticationScreen(context, request_code);
+         //   showAuthenticationScreen(context, request_code);
             throw e;
         } catch (Exception e) {
             BRErrorPipe.parseKeyStoreError(context, e, alias, true);
@@ -313,15 +313,15 @@ public class BRKeyStore {
 
             return data;
         } catch (InvalidKeyException e) {
-            if (e instanceof UserNotAuthenticatedException) {
+          /*  if (e instanceof UserNotAuthenticatedException) {
                 /** user not authenticated, ask the system for authentication */
-                showAuthenticationScreen(context, request_code);
+           /*     showAuthenticationScreen(context, request_code);
                 throw (UserNotAuthenticatedException) e;
-            } else {
+            } else {*/
                 Log.e(TAG, "_getData: InvalidKeyException", e);
                 BRErrorPipe.parseKeyStoreError(context, e, alias, true);
                 return null;
-            }
+        //    }
         } catch (IOException | CertificateException | KeyStoreException e) {
             /** keyStore.load(null) threw the Exception, meaning the keystore is unavailable */
             Log.e(TAG, "_getData: keyStore.load(null) threw the Exception, meaning the keystore is unavailable", e);
@@ -699,7 +699,7 @@ public class BRKeyStore {
 
     }
 
-    public static void showAuthenticationScreen(Context context, int requestCode) {
+    /*public static void showAuthenticationScreen(Context context, int requestCode) {
         // Create the Confirm Credentials screen. You can customize the title and description. Or
         // we will provide a generic one for you if you leave it null
         if (context instanceof Activity) {
@@ -710,14 +710,14 @@ public class BRKeyStore {
             if (intent != null) {
                 app.startActivityForResult(intent, requestCode);
             } else {
-                Log.e(TAG, "showAuthenticationScreen: failed to create intent for auth");
+               // Log.e(TAG, "showAuthenticationScreen: failed to create intent for auth");
                 FirebaseCrash.report(new RuntimeException("showAuthenticationScreen: failed to create intent for auth"));
                 app.finish();
             }
         } else {
             Log.e(TAG, "showAuthenticationScreen: context is not activity!");
         }
-    }
+    }*/
 
     public static byte[] readBytesFromFile(String path) {
         byte[] bytes = null;

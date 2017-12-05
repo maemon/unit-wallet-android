@@ -2,6 +2,7 @@ package com.breadwallet.tools.threads;
 
 import android.app.Activity;
 import android.os.AsyncTask;
+import android.util.Log;
 
 import com.breadwallet.BreadApp;
 import com.breadwallet.BuildConfig;
@@ -67,7 +68,7 @@ public class ImportPrivKeyTask extends AsyncTask<String, String, String> {
         if (params.length == 0) return null;
         key = params[0];
         if (key == null || key.isEmpty() || app == null) return null;
-        String tmpAddrs = BRWalletManager.getInstance().getAddressFromPrivKey(key);
+        String tmpAddrs = BRWalletManager.getInstance().getAddressp2sh(key);
         String url = UNSPENT_URL + tmpAddrs + "/utxo";
         importPrivKeyEntity = createTx(url);
         if (importPrivKeyEntity == null) {

@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.util.Log;
 
 import com.breadwallet.R;
+import com.breadwallet.presenter.activities.util.BRActivity;
 import com.breadwallet.presenter.customviews.BRDialogView;
 import com.breadwallet.presenter.entities.PaymentItem;
 import com.breadwallet.presenter.entities.PaymentRequestWrapper;
@@ -12,7 +13,10 @@ import com.breadwallet.tools.animation.BRAnimator;
 import com.breadwallet.tools.animation.BRDialog;
 import com.breadwallet.tools.manager.BREventManager;
 import com.breadwallet.tools.threads.PaymentProtocolTask;
+import com.breadwallet.tools.util.BRCurrency;
 import com.breadwallet.wallet.BRWalletManager;
+import com.breadwallet.tools.manager.CurrencyFetchManager;
+
 
 import java.io.UnsupportedEncodingException;
 import java.math.BigDecimal;
@@ -105,12 +109,15 @@ public class BitcoinUrlHandler {
     }
 
     public static boolean isBitcoinUrl(String url) {
-        RequestObject requestObject = getRequestFromString(url);
-        // return true if the request is valid url and has param: r or param: address
-        // return true if it is a valid bitcoinPrivKey
-        return (requestObject != null && (requestObject.r != null || requestObject.address != null)
-                || BRWalletManager.getInstance().isValidBitcoinBIP38Key(url)
-                || BRWalletManager.getInstance().isValidBitcoinPrivateKey(url));
+
+            RequestObject requestObject = getRequestFromString(url);
+            // return true if the request is valid url and has param: r or param: address
+            // return true if it is a valid bitcoinPrivKey
+            return (requestObject != null && (requestObject.r != null || requestObject.address != null)
+                    || BRWalletManager.getInstance().isValidBitcoinBIP38Key(url)
+                    || BRWalletManager.getInstance().isValidBitcoinPrivateKey(url));
+
+
     }
 
 
