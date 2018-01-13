@@ -27,7 +27,7 @@
 
 #include "BRKey.h"
 #include "BRInt.h"
-#include "../../../../../../../../AppData/Local/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/lib64/clang/5.0.300080/include/stdarg.h"
+#include <stdarg.h>
 #include <stddef.h>
 #include <inttypes.h>
 
