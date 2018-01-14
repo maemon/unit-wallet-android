@@ -97,7 +97,8 @@ public class ScanQRActivity extends BRActivity {
 
 
                     }
-                    else if (theString.charAt(12) == '1' || theString.charAt(12) == '1'){
+                    // Include addresses that start with 1 or 3.
+                    else if (theString.charAt(12) == '1' || theString.charAt(12) == '3'){
 
                         interData = "bitcoin:" + theString.substring(12);
 
