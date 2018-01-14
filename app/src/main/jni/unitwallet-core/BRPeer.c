@@ -46,7 +46,7 @@
 #if BITCOIN_TESTNET
 #define MAGIC_NUMBER 0x0709110b
 #else
-#define MAGIC_NUMBER 0xd9b4bef9
+#define MAGIC_NUMBER 0xe8f3e1e3
 #endif
 #define HEADER_LENGTH      24
 #define MAX_MSG_LENGTH     0x02000000
