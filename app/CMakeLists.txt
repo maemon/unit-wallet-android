@@ -35,6 +35,8 @@ add_library( # Specifies the name of the library.
              src/main/jni/unitwallet-core/BRBIP39WordsEn.h
              src/main/jni/unitwallet-core/BRBloomFilter.c
              src/main/jni/unitwallet-core/BRBloomFilter.h
+             src/main/jni/unitwallet-core/BRCashAddr.c
+             src/main/jni/unitwallet-core/BRCashAddr.h
              src/main/jni/unitwallet-core/BRCrypto.c
              src/main/jni/unitwallet-core/BRCrypto.h
              src/main/jni/unitwallet-core/BRInt.h
