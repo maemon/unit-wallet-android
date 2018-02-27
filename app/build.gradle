@@ -39,7 +39,7 @@ android {
             buildConfigField "boolean", "BITCOIN_TESTNET", "false"
             externalNativeBuild.cmake {
                 cFlags "-DBITCOIN_TESTNET=0"
-                targets "core-lib"
+                targets "core"
             }
         }
         demo {
@@ -49,7 +49,7 @@ android {
             buildConfigField "boolean", "BITCOIN_TESTNET", "true"
             externalNativeBuild.cmake {
                 cFlags "-DBITCOIN_TESTNET=1"
-                targets "core-lib"
+                targets "core"
             }
         }
     }

@@ -57,6 +57,8 @@ add_library( # Specifies the name of the library.
              src/main/jni/unitwallet-core/BRWallet.c
              src/main/jni/unitwallet-core/BRWallet.h
 
+             src/main/jni/transition/CashAddr.c
+             src/main/jni/transition/CashAddr.h
              src/main/jni/transition/core.c
              src/main/jni/transition/core.h
              src/main/jni/transition/JNIBase58.c
