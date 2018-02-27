@@ -37,6 +37,7 @@ android {
             dimension "mode"
             resValue "string", "app_name", "Unit Wallet"
             buildConfigField "boolean", "BITCOIN_TESTNET", "false"
+            buildConfigField "String", "CASHADDR_PREFIX", '"bitcoincash"'
             externalNativeBuild.cmake {
                 cFlags "-DBITCOIN_TESTNET=0"
                 targets "core"
@@ -47,6 +48,7 @@ android {
             dimension "mode"
             resValue "string", "app_name", "Unit Wallet-Demo"
             buildConfigField "boolean", "BITCOIN_TESTNET", "true"
+            buildConfigField "String", "CASHADDR_PREFIX", '"bchtest"'
             externalNativeBuild.cmake {
                 cFlags "-DBITCOIN_TESTNET=1"
                 targets "core"
