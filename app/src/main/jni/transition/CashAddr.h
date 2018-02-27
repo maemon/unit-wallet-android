@@ -21,6 +21,12 @@ Java_com_breadwallet_tools_crypto_CashAddr_BRCashAddrDecode(
         jclass type,
         jstring cashAddr_);
 
+JNIEXPORT jboolean JNICALL
+Java_com_breadwallet_tools_crypto_CashAddr_BRCashAddrValidate(
+        JNIEnv *env,
+        jclass type,
+        jstring cashAddr_);
+
 #ifdef __cplusplus
 }
 #endif

@@ -180,3 +180,11 @@ size_t BRCashAddrEncode(char *cashAddr55, const char *legacyAddr)
     data[0] = ver;
     return _BRCashAddrEncode(cashAddr55, hrp, data, 21);
 }
+
+// returns true if provided CashAddr is valid
+int BRCashAddrValidate(char *cashAddr)
+{
+    uint8_t data[21];
+    char hrp[12];
+    return _BRCashAddrDecode(hrp, data, cashAddr) == 21;
+}

@@ -18,6 +18,7 @@ JNIEXPORT jstring JNICALL Java_com_breadwallet_tools_crypto_CashAddr_BRCashAddrE
 
     (*env)->ReleaseStringUTFChars(env, legacyAddr_, legacyAddr);
 
+    if (size == 0) return NULL;
     return (*env)->NewStringUTF(env, cashAddr);
 }
 
@@ -33,5 +34,20 @@ Java_com_breadwallet_tools_crypto_CashAddr_BRCashAddrDecode(
 
     (*env)->ReleaseStringUTFChars(env, cashAddr_, cashAddr);
 
+    if (size == 0) return NULL;
     return (*env)->NewStringUTF(env, legacyAddr);
+}
+
+JNIEXPORT jboolean JNICALL
+Java_com_breadwallet_tools_crypto_CashAddr_BRCashAddrValidate(
+        JNIEnv *env,
+        jclass type,
+        jstring cashAddr_) {
+    const char *cashAddr = (*env)->GetStringUTFChars(env, cashAddr_, 0);
+
+    int result = BRCashAddrValidate(cashAddr);
+
+    (*env)->ReleaseStringUTFChars(env, cashAddr_, cashAddr);
+
+    return (jboolean) (result ? JNI_TRUE : JNI_FALSE);
 }

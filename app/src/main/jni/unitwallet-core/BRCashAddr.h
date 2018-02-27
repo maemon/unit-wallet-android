@@ -41,6 +41,9 @@ size_t BRCashAddrDecode(char *legacyAddr36, const char *cashAddr);
 // returns the number of bytes written to bCashAddr55 (maximum of 55)
 size_t BRCashAddrEncode(char *cashAddr55, const char *legacyAddr);
 
+// returns true if provided CashAddr is valid
+int BRCashAddrValidate(char *cashAddr);
+
 #ifdef __cplusplus
 }
 #endif
