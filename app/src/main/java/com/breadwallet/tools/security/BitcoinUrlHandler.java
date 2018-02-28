@@ -197,15 +197,12 @@ public class BitcoinUrlHandler {
                     BRAnimator.showSendFragment(app, url);
                 }
             });
-        } else {
-            if (app != null) {
-                BRAnimator.killAllFragments(app);
-                BRSender.getInstance().sendTransaction(app, new PaymentItem(addresses, null, new BigDecimal(amount).longValue(), null, true));
-            }
+        } else if (app != null) {
+            BRAnimator.killAllFragments(app);
+            BRSender.getInstance().sendTransaction(app, new PaymentItem(addresses, null, new BigDecimal(amount).longValue(), null, true));
         }
 
         return true;
-
     }
 
     public static native PaymentRequestWrapper parsePaymentRequest(byte[] req);
