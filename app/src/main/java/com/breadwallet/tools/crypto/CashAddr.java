@@ -13,11 +13,6 @@ public class CashAddr {
     }
 
     private String value;
-    private byte[] hash;
-
-    private CashAddr(byte[] hash) {
-
-    }
 
     private CashAddr(String cashAddr) {
         this.value = cashAddr;
@@ -45,14 +40,22 @@ public class CashAddr {
             }
         }
 
-        //TODO: checksum
+        if (!BRCashAddrValidate(cashAddr)) {
+            throw new IllegalArgumentException("wrong_checksum");
+        }
 
         return new CashAddr(cashAddr);
+    }
+
+    public static boolean validate(String cashAddr) {
+        return BRCashAddrValidate(cashAddr);
     }
 
     private static native String BRCashAddrDecode(String cashAddr);
 
     private static native String BRCashAddrEncode(String legacyAddr);
+
+    private static native boolean BRCashAddrValidate(String cashAddr);
 
     public String toLegacy() {
         return BRCashAddrDecode(this.value);
@@ -63,24 +66,7 @@ public class CashAddr {
         return value;
     }
 
-    public String  toUnprefixedString(){
+    public String toUnprefixedString() {
         return value.replace(BuildConfig.CASHADDR_PREFIX + ":", "");
-    }
-
-    private int polymod(byte[] values) {
-
-        final int[] GENERATORS = {0x3b6a57b2, 0x26508e6d, 0x1ea119fa, 0x3d4233dd, 0x2a1462b3};
-
-        int chk = 1;
-
-        for (byte b : values) {
-            byte top = (byte) (chk >> 0x19);
-            chk = b ^ ((chk & 0x1ffffff) << 5);
-            for (int i = 0; i < 5; i++) {
-                chk ^= ((top >> i) & 1) == 1 ? GENERATORS[i] : 0;
-            }
-        }
-
-        return chk;
     }
 }
