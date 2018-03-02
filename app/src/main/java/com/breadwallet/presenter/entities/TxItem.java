@@ -59,13 +59,15 @@ public class TxItem {
         this.sent = sent;
         this.received = received;
         this.fee = fee;
-        this.to = map(to, new Fun.Map<String, CashAddr>() {
+        this.to = new CashAddr[to.length];
+        map(to, new Fun.Map<String, CashAddr>() {
             @Override
             public CashAddr map(String value) {
                 return CashAddr.fromLegacy(value);
             }
         }).toArray(this.to);
-        this.from = map(from, new Fun.Map<String, CashAddr>() {
+        this.from = new CashAddr[from.length];
+        map(from, new Fun.Map<String, CashAddr>() {
             @Override
             public CashAddr map(String value) {
                 return CashAddr.fromLegacy(value);

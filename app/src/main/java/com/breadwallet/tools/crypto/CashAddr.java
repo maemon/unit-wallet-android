@@ -1,6 +1,7 @@
 package com.breadwallet.tools.crypto;
 
 import android.support.annotation.NonNull;
+import android.util.Log;
 
 import com.breadwallet.BuildConfig;
 
@@ -18,9 +19,8 @@ public class CashAddr {
         this.value = cashAddr;
     }
 
-    @NonNull
     public static CashAddr fromLegacy(String legacyAddr) {
-        return new CashAddr(BRCashAddrEncode(legacyAddr));
+        return legacyAddr == null ? null : new CashAddr(BRCashAddrEncode(legacyAddr));
     }
 
     public static CashAddr parse(String cashAddr) {
