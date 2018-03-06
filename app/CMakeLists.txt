@@ -35,27 +35,27 @@ add_library( # Specifies the name of the library.
              src/main/jni/unitwallet-core/BRBIP39WordsEn.h
              src/main/jni/unitwallet-core/BRBloomFilter.c
              src/main/jni/unitwallet-core/BRBloomFilter.h
-             src/main/jni/unitwallet-core/BRCashAddr.c
-             src/main/jni/unitwallet-core/BRCashAddr.h
-             src/main/jni/unitwallet-core/BRCrypto.c
-             src/main/jni/unitwallet-core/BRCrypto.h
-             src/main/jni/unitwallet-core/BRInt.h
-             src/main/jni/unitwallet-core/BRKey.c
-             src/main/jni/unitwallet-core/BRKey.h
-             src/main/jni/unitwallet-core/BRMerkleBlock.c
-             src/main/jni/unitwallet-core/BRMerkleBlock.h
-             src/main/jni/unitwallet-core/BRPaymentProtocol.c
-             src/main/jni/unitwallet-core/BRPaymentProtocol.h
-             src/main/jni/unitwallet-core/BRPeer.c
-             src/main/jni/unitwallet-core/BRPeer.h
-             src/main/jni/unitwallet-core/BRPeerManager.c
-             src/main/jni/unitwallet-core/BRPeerManager.h
-             src/main/jni/unitwallet-core/BRSet.c
-             src/main/jni/unitwallet-core/BRSet.h
-             src/main/jni/unitwallet-core/BRTransaction.c
-             src/main/jni/unitwallet-core/BRTransaction.h
-             src/main/jni/unitwallet-core/BRWallet.c
-             src/main/jni/unitwallet-core/BRWallet.h
+             src/main/jni/unit-wallet-core/BRCashAddr.c
+             src/main/jni/unit-wallet-core/BRCashAddr.h
+             src/main/jni/unit-wallet-core/BRCrypto.c
+             src/main/jni/unit-wallet-core/BRCrypto.h
+             src/main/jni/unit-wallet-core/BRInt.h
+             src/main/jni/unit-wallet-core/BRKey.c
+             src/main/jni/unit-wallet-core/BRKey.h
+             src/main/jni/unit-wallet-core/BRMerkleBlock.c
+             src/main/jni/unit-wallet-core/BRMerkleBlock.h
+             src/main/jni/unit-wallet-core/BRPaymentProtocol.c
+             src/main/jni/unit-wallet-core/BRPaymentProtocol.h
+             src/main/jni/unit-wallet-core/BRPeer.c
+             src/main/jni/unit-wallet-core/BRPeer.h
+             src/main/jni/unit-wallet-core/BRPeerManager.c
+             src/main/jni/unit-wallet-core/BRPeerManager.h
+             src/main/jni/unit-wallet-core/BRSet.c
+             src/main/jni/unit-wallet-core/BRSet.h
+             src/main/jni/unit-wallet-core/BRTransaction.c
+             src/main/jni/unit-wallet-core/BRTransaction.h
+             src/main/jni/unit-wallet-core/BRWallet.c
+             src/main/jni/unit-wallet-core/BRWallet.h
 
              src/main/jni/transition/CashAddr.c
              src/main/jni/transition/CashAddr.h
@@ -73,7 +73,7 @@ add_library( # Specifies the name of the library.
              src/main/jni/transition/wallet.h)
 
 
-include_directories(src/main/jni/unitwallet-core/)
+include_directories(src/main/jni/unit-wallet-core/)
 include_directories(src/main/secp/secp256k1/include/)
 include_directories(src/main/secp/secp256k1/src/)
 include_directories(src/main/secp/secp256k1/)
