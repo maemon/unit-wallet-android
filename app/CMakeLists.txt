@@ -21,20 +21,20 @@ add_library( # Specifies the name of the library.
              SHARED
 
              # Provides a relative path to your source file(s).
-             src/main/jni/unitwallet-core/BRAddress.c
-             src/main/jni/unitwallet-core/BRAddress.h
-             src/main/jni/unitwallet-core/BRArray.h
-             src/main/jni/unitwallet-core/BRBase58.c
-             src/main/jni/unitwallet-core/BRBase58.h
-             src/main/jni/unitwallet-core/BRBIP32Sequence.c
-             src/main/jni/unitwallet-core/BRBIP32Sequence.h
-             src/main/jni/unitwallet-core/BRBIP38Key.c
-             src/main/jni/unitwallet-core/BRBIP38Key.h
-             src/main/jni/unitwallet-core/BRBIP39Mnemonic.c
-             src/main/jni/unitwallet-core/BRBIP39Mnemonic.h
-             src/main/jni/unitwallet-core/BRBIP39WordsEn.h
-             src/main/jni/unitwallet-core/BRBloomFilter.c
-             src/main/jni/unitwallet-core/BRBloomFilter.h
+             src/main/jni/unit-wallet-core/BRAddress.c
+             src/main/jni/unit-wallet-core/BRAddress.h
+             src/main/jni/unit-wallet-core/BRArray.h
+             src/main/jni/unit-wallet-core/BRBase58.c
+             src/main/jni/unit-wallet-core/BRBase58.h
+             src/main/jni/unit-wallet-core/BRBIP32Sequence.c
+             src/main/jni/unit-wallet-core/BRBIP32Sequence.h
+             src/main/jni/unit-wallet-core/BRBIP38Key.c
+             src/main/jni/unit-wallet-core/BRBIP38Key.h
+             src/main/jni/unit-wallet-core/BRBIP39Mnemonic.c
+             src/main/jni/unit-wallet-core/BRBIP39Mnemonic.h
+             src/main/jni/unit-wallet-core/BRBIP39WordsEn.h
+             src/main/jni/unit-wallet-core/BRBloomFilter.c
+             src/main/jni/unit-wallet-core/BRBloomFilter.h
              src/main/jni/unit-wallet-core/BRCashAddr.c
              src/main/jni/unit-wallet-core/BRCashAddr.h
              src/main/jni/unit-wallet-core/BRCrypto.c
