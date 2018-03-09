@@ -140,6 +140,7 @@ public class BRPeerManager {
             public void run() {
                 if (replace) MerkleBlockDataSource.getInstance(ctx).deleteAllBlocks();
                 MerkleBlockDataSource.getInstance(ctx).putMerkleBlocks(blockEntities);
+                BRSharedPrefs.putStartHeight(ctx, blockEntities[0].getBlockHeight());
             }
         }).start();
 
@@ -174,7 +175,6 @@ public class BRPeerManager {
                 MerkleBlockDataSource.getInstance(ctx).deleteAllBlocks();
             }
         }).start();
-
     }
 
     public static void deletePeers() {

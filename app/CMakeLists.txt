@@ -37,6 +37,7 @@ add_library( # Specifies the name of the library.
              src/main/jni/unit-wallet-core/BRBloomFilter.h
              src/main/jni/unit-wallet-core/BRCashAddr.c
              src/main/jni/unit-wallet-core/BRCashAddr.h
+             src/main/jni/unit-wallet-core/BRChainParams.h
              src/main/jni/unit-wallet-core/BRCrypto.c
              src/main/jni/unit-wallet-core/BRCrypto.h
              src/main/jni/unit-wallet-core/BRInt.h
