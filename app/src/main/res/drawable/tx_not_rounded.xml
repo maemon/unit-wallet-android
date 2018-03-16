@@ -2,4 +2,5 @@
     android:shape="rectangle">
 
     <solid android:color="@color/white"/>
+
 </shape>

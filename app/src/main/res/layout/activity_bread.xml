@@ -19,7 +19,9 @@
         android:id="@+id/toolbar_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:elevation="8dp"
+        android:elevation="3dp"
+        android:layout_marginBottom="2dp"
+        android:background="@color/white"
         android:orientation="vertical">
 
         <ViewFlipper
@@ -28,11 +30,10 @@
             android:layout_height="fill_parent">
 
             <android.support.v7.widget.Toolbar
-                xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/bread_bar"
                 android:layout_width="match_parent"
                 android:layout_height="160dp"
-                android:background="@drawable/bread_gradient"
+                android:background="@color/white"
                 android:clipChildren="false"
                 android:clipToPadding="false"
                 android:contentInsetLeft="0dp"
@@ -44,39 +45,23 @@
                 <android.support.constraint.ConstraintLayout
                     android:id="@+id/bread_toolbar"
                     android:layout_width="match_parent"
-                    android:animateLayoutChanges="true"
                     android:layout_height="match_parent"
+                    android:animateLayoutChanges="true"
                     android:clipChildren="false"
                     android:clipToPadding="false">
-                    <View
-                        android:layout_width="0dp"
-                        android:layout_height="50dp"
-                        tools:layout_editor_absoluteY="162dp"
-                        tools:layout_editor_absoluteX="0dp">
-                    </View>
 
                     <ImageView
                         android:id="@+id/imageView11"
-                        android:layout_width="175dp"
-                        android:layout_height="65dp"
+                        android:layout_width="110dp"
+                        android:layout_height="55dp"
                         android:layout_marginBottom="6dp"
-                        android:layout_marginRight="103dp"
+                        android:layout_marginLeft="14dp"
                         android:layout_weight="1"
                         android:adjustViewBounds="true"
-
-
                         android:cropToPadding="true"
-                        android:src="@drawable/logog"
+                        android:src="@drawable/logo_main"
                         app:layout_constraintBottom_toTopOf="@+id/primary_price"
-                        app:layout_constraintRight_toLeftOf="@+id/payButton" />
-
-                    <View
-                        android:id="@+id/blankUnitlog"
-                        android:layout_width="0dp"
-                        android:layout_height="50dp"
-                        tools:layout_editor_absoluteY="162dp"
-                        tools:layout_editor_absoluteX="0dp">
-                    </View>
+                        app:layout_constraintLeft_toLeftOf="parent"/>
 
                     <com.breadwallet.presenter.customviews.BRText
                         android:id="@+id/primary_price"
@@ -84,54 +69,25 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="45dp"
                         android:layout_marginLeft="16dp"
-                        android:layout_marginStart="16dp"
-                        android:text="$0"
-                        android:textColor="@color/white"
+                        android:text="0.00 BCH"
+                        android:textColor="@color/unit_color"
                         android:textSize="24sp"
                         app:customFont="HelveticaNeue.ttf"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintLeft_toLeftOf="parent" />
+                        app:layout_constraintLeft_toLeftOf="parent"/>
 
                     <com.breadwallet.presenter.customviews.BRText
                         android:id="@+id/secondary_price"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="0dp"
-                        android:layout_marginStart="8dp"
                         android:layout_marginTop="-1dp"
-                        android:text="b0"
-                        android:textColor="@color/white"
+                        android:layout_marginLeft="16dp"
+                        android:text="0.00 USD"
+                        android:textColor="@color/dark_gray"
                         android:textSize="18sp"
                         app:customFont="HelveticaNeue.ttf"
-                        app:layout_constraintLeft_toLeftOf="@+id/equals"
-
-                        app:layout_constraintTop_toBottomOf="@+id/primary_price" />
-
-                    <com.breadwallet.presenter.customviews.BRText
-                        android:id="@+id/price_change_text"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textColor="@color/almost_black"
-                        android:textSize="16sp"
-                        app:customFont="HelveticaNeue.ttf"
-                        app:layout_constraintLeft_toLeftOf="@+id/primary_price"
-                        app:layout_constraintTop_toBottomOf="@+id/primary_price"
-                        android:layout_marginLeft="55dp"
-                        android:layout_marginTop="-14dp" />
-
-                    <com.breadwallet.presenter.customviews.BRText
-                        android:id="@+id/equals"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:text="="
-                        android:textColor="@color/white"
-                        android:textSize="16sp"
-                        android:visibility="invisible"
-                        app:customFont="HelveticaNeue.ttf"
-                        tools:layout_editor_absoluteX="16dp"
-                        tools:layout_editor_absoluteY="125dp" />
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/primary_price"/>
 
                     <com.breadwallet.presenter.customviews.BRText
                         android:id="@+id/manage_text"
@@ -142,37 +98,35 @@
                         android:visibility="gone"
                         app:customFont="HelveticaNeue.ttf"
                         app:layout_constraintRight_toRightOf="parent"
-                        tools:layout_editor_absoluteY="281dp" />
+                        tools:layout_editor_absoluteY="281dp"/>
 
                     <ImageButton
                         android:id="@+id/search_icon"
                         android:layout_width="32dp"
                         android:layout_height="32dp"
                         android:layout_marginBottom="40dp"
-                        android:layout_marginEnd="16dp"
-                        android:background="@drawable/ic_search_black_24dp"
+                        android:layout_marginRight="16dp"
+                        android:background="@drawable/ic_search_gray_24dp"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintRight_toRightOf="parent"
-                        android:layout_marginRight="16dp" />
+                        app:layout_constraintRight_toRightOf="parent"/>
 
                     <ImageButton
                         android:id="@+id/payButton"
                         android:layout_width="99dp"
                         android:layout_height="51dp"
-                        android:layout_marginBottom="53dp"
-                        android:layout_marginEnd="16dp"
-                        android:layout_marginRight="7dp"
-                        android:background="@drawable/pay2"
+                        android:layout_marginBottom="40dp"
+                        android:layout_marginRight="14dp"
+                        android:background="@drawable/pay"
                         android:scrollbarAlwaysDrawVerticalTrack="true"
                         app:layout_constraintBottom_toBottomOf="@id/search_icon"
-                        app:layout_constraintRight_toRightOf="parent" />
+                        app:layout_constraintRight_toRightOf="parent"/>
 
 
                 </android.support.constraint.ConstraintLayout>
+
             </android.support.v7.widget.Toolbar>
 
             <com.breadwallet.presenter.customviews.BRSearchBar
-                xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/search_bar"
                 android:layout_width="match_parent"
                 android:layout_height="160dp"
@@ -185,7 +139,6 @@
             </com.breadwallet.presenter.customviews.BRSearchBar>
 
             <com.breadwallet.presenter.customviews.BRNotificationBar
-                xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/notification_bar"
                 android:layout_width="match_parent"
                 android:layout_height="160dp"
@@ -199,53 +152,6 @@
             </com.breadwallet.presenter.customviews.BRNotificationBar>
 
         </ViewFlipper>
-
-        <android.support.constraint.ConstraintLayout
-            android:id="@+id/loading_wallet_layout"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginTop="1px"
-            android:animateLayoutChanges="true"
-            android:background="@drawable/loading_wallet_layout"
-            android:visibility="visible"
-            tools:layout_constraintLeft_creator="1"
-            tools:layout_constraintRight_creator="1"
-            tools:layout_constraintTop_creator="1">
-
-            <com.breadwallet.presenter.customviews.BRText
-                android:id="@+id/loading_label"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginTop="8dp"
-                android:text="@string/Account.loadingMessage"
-                android:textColor="@color/white"
-                app:customFont="HelveticaNeue.ttf"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintHorizontal_bias="0.501"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.35000002"
-                tools:layout_constraintLeft_creator="1"/>
-
-            <ProgressBar
-                android:id="@+id/load_wallet_progress"
-                style="?android:attr/progressBarStyleHorizontal"
-                android:layout_width="0dp"
-                android:layout_height="16dp"
-                android:layout_marginEnd="96dp"
-                android:layout_marginLeft="96dp"
-                android:layout_marginRight="96dp"
-                android:layout_marginStart="96dp"
-                android:layout_marginTop="4dp"
-                android:progressDrawable="@drawable/load_wallet_progress"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/loading_label"/>
-
-        </android.support.constraint.ConstraintLayout>
 
     </LinearLayout>
 
@@ -263,11 +169,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="0dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:clipToPadding="false"
-            android:padding="8dp"
             app:layout_constraintBottom_toTopOf="@+id/bottom_toolbar_layout1"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -299,7 +202,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_gravity="bottom"
-        android:background="@color/white"
+        android:background="@color/unit_color"
         android:elevation="9dp"
         android:orientation="horizontal"
         android:weightSum="3"
@@ -328,8 +231,8 @@
                 android:layout_weight="1"
                 android:text="@string/Send.sendLabel"
                 android:textAllCaps="false"
-                android:textColor="@color/status_bar"
-                app:customFont="HelveticaNeue.ttf" />
+                android:textColor="@color/white"
+                app:customFont="HelveticaNeue.ttf"/>
 
             <View
                 android:layout_width="fill_parent"
@@ -356,8 +259,8 @@
                 android:layout_weight="1"
                 android:text="Receive"
                 android:textAllCaps="false"
-                android:textColor="@color/status_bar"
-                app:customFont="HelveticaNeue.ttf" />
+                android:textColor="@color/white"
+                app:customFont="HelveticaNeue.ttf"/>
 
             <View
                 android:layout_width="fill_parent"
@@ -383,8 +286,8 @@
                 android:layout_weight="1"
                 android:text="Discover"
                 android:textAllCaps="false"
-                android:textColor="@color/status_bar"
-                app:customFont="HelveticaNeue.ttf" />
+                android:textColor="@color/white"
+                app:customFont="HelveticaNeue.ttf"/>
 
             <View
                 android:layout_width="fill_parent"
@@ -411,8 +314,8 @@
                 android:layout_weight="1"
                 android:text="Menu"
                 android:textAllCaps="false"
-                android:textColor="@color/status_bar"
-                app:customFont="HelveticaNeue.ttf" />
+                android:textColor="@color/white"
+                app:customFont="HelveticaNeue.ttf"/>
 
             <View
                 android:layout_width="fill_parent"
