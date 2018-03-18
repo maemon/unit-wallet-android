@@ -119,18 +119,17 @@ public class QRUtils {
         Intent intent = new Intent(Intent.ACTION_SENDTO);
 		
         intent.setData(Uri.parse(via));
-			String recomposedURi = "bitcoincash:" + bitcoinUri.substring(8);
 
         if (via.equalsIgnoreCase("sms:")) {
-            intent.putExtra("sms_body", recomposedURi);
+            intent.putExtra("sms_body", bitcoinUri);
 
             intent.putExtra("exit_on_sent", true);
         } else {
             intent.putExtra(Intent.EXTRA_SUBJECT, "Bitcoin Cash Address");
-            intent.putExtra(Intent.EXTRA_TEXT, recomposedURi);
+            intent.putExtra(Intent.EXTRA_TEXT, bitcoinUri);
         }
         if (uri != null)
-            intent.putExtra(Intent.EXTRA_STREAM, recomposedURi);
+            intent.putExtra(Intent.EXTRA_STREAM, bitcoinUri);
         app.startActivity(Intent.createChooser(intent, "Bitcoin Cash Address"));
     }
 
