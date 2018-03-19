@@ -32,6 +32,7 @@ import android.widget.ViewFlipper;
 import com.breadwallet.R;
 import com.breadwallet.presenter.activities.util.ActivityUTILS;
 import com.breadwallet.presenter.activities.util.BRActivity;
+import com.breadwallet.presenter.customviews.BRButton;
 import com.breadwallet.presenter.customviews.BRSearchBar;
 import com.breadwallet.presenter.fragments.FragmentManage;
 import com.breadwallet.tools.animation.BRAnimator;
@@ -96,7 +97,7 @@ public class BreadActivity extends BRActivity implements BRWalletManager.OnBalan
 
     private LinearLayout sendButton;
     private LinearLayout receiveButton;
-    private ImageButton payButton;
+    private BRButton payButton;
     private LinearLayout menuButton;
     private LinearLayout discoverButton;
     private NetworkChangeReceiver mNetworkStateReceiver;
@@ -387,7 +388,7 @@ public class BreadActivity extends BRActivity implements BRWalletManager.OnBalan
     private void initializeViews() {
         sendButton = (LinearLayout) findViewById(R.id.send_layout);
         receiveButton = (LinearLayout) findViewById(R.id.receive_layout);
-        payButton = (ImageButton) findViewById(R.id.payButton);
+        payButton = (BRButton) findViewById(R.id.payButton);
         manageText = (TextView) findViewById(R.id.manage_text);
         menuButton = (LinearLayout) findViewById(R.id.menu_layout);
         discoverButton = (LinearLayout) findViewById(R.id.discoverButton);

@@ -110,14 +110,16 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintRight_toRightOf="parent"/>
 
-                    <ImageButton
+                    <com.breadwallet.presenter.customviews.BRButton
                         android:id="@+id/payButton"
-                        android:layout_width="99dp"
-                        android:layout_height="51dp"
-                        android:layout_marginBottom="40dp"
-                        android:layout_marginRight="14dp"
-                        android:background="@drawable/pay"
+                        android:layout_width="96dp"
+                        android:layout_height="36dp"
+                        android:layout_marginBottom="54dp"
+                        android:layout_marginRight="16dp"
+                        android:background="@drawable/b_pay"
                         android:scrollbarAlwaysDrawVerticalTrack="true"
+                        android:text="@string/UnlockScreen.scan"
+                        android:textColor="@color/white"
                         app:layout_constraintBottom_toBottomOf="@id/search_icon"
                         app:layout_constraintRight_toRightOf="parent"/>
 
