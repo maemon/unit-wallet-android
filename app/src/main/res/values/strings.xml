@@ -594,11 +594,11 @@
   <!-- Disabled until date -->
   <string name="UnlockScreen.disabled">Disabled until: %1$s</string>
   <!-- My Address button title -->
-  <string name="UnlockScreen.myAddress">My Address</string>
+  <string name="UnlockScreen.myAddress">Receive</string>
   <!-- Reset PIN with Paper Key button label. -->
   <string name="UnlockScreen.resetPin">Reset PIN</string>
   <!-- Scan button title -->
-  <string name="UnlockScreen.scan">Scan</string>
+  <string name="UnlockScreen.scan">Pay</string>
   <!-- Unlock Screen sub-header -->
   <string name="UnlockScreen.subheader">Enter PIN</string>
   <!-- TouchID prompt text -->

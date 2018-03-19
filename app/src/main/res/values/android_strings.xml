@@ -16,7 +16,7 @@
     <!-- Fingerprint -->
     <string name="Fingerprint.Android">Fingerprint</string>
     <!-- Enable fingerprint for this wallet called Bread -->
-    <string name="Fingerprint.enable.Android">Enable Fingerprint for Bread</string>
+    <string name="Fingerprint.enable.Android">Enable Fingerprint for Unit</string>
     <!-- Fingerprint enabling description body -->
     <string name="Fingerprint.body.Android">You can customize your Fingerprint Spending Limit from the Fingerprint Spending Limit screen</string>
     <!-- Fingerprint limit -->
@@ -32,7 +32,7 @@
     <!-- Permission required -->
     <string name="Permissions.title.Android">Permission Required</string>
     <!-- Instructions how to allow the camera access for the app -->
-    <string name="Permissions.body.Android">Allow camera access in \"Settings\" > \"Apps\" > \"breadwallet\" > \"Permissions\"</string>
+    <string name="Permissions.body.Android">Allow camera access in \"Settings\" > \"Apps\" > \"unit\" > \"Permissions\"</string>
     <!-- Switch button from fingerprint to PIN insert -->
     <string name="Pin.title.Android">PIN</string>
     <!-- Fingerprint was recognized by the scanner -->
