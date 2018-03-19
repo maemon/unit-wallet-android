@@ -171,7 +171,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="0dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="0dp"
             android:clipToPadding="false"
             app:layout_constraintBottom_toTopOf="@+id/bottom_toolbar_layout1"
             app:layout_constraintHorizontal_bias="0.0"

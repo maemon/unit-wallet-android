@@ -327,7 +327,7 @@
                 android:text="@string/Receive.request"
                 android:textColor="@color/almost_black"
                 android:textSize="18sp"
-                app:buttonType="2"
+                app:buttonType="5"
                 app:isBreadButton="true"/>
 
         </LinearLayout>
