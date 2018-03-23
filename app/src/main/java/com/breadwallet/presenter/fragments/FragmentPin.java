@@ -184,7 +184,7 @@ public class FragmentPin extends Fragment {
 
     private void updateDots() {
         if(dot1 == null) return;
-        AuthManager.getInstance().updateDots(getActivity(), pinLimit, pin.toString(), dot1, dot2, dot3, dot4, dot5, dot6, R.drawable.ic_pin_dot_gray, new AuthManager.OnPinSuccess() {
+        AuthManager.getInstance().updateDots(getActivity(), pinLimit, pin.toString(), dot1, dot2, dot3, dot4, dot5, dot6, R.drawable.ic_pin_dot_white, new AuthManager.OnPinSuccess() {
             @Override
             public void onSuccess() {
                 if (AuthManager.getInstance().checkAuth(pin.toString(), getContext())) {

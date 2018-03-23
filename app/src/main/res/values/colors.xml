@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <item name="white" type="color">#ffffff</item>
-    <item name="black" type="color">#ff000000</item>
-    <item name="gray" type="color">#ff787878</item>
-    <item name="light_gray" type="color">#ff9d9d9d</item>
-    <item name="separator_gray" type="color">#B9BCBD</item>
-    <item name="gray_shadow" type="color">#41484848</item>
-    <item name="page_indicator_gray" type="color">#ff9d9d9d</item>
-    <item name="extra_light_gray" type="color">#D6DAE1</item>
-    <item name="dark_gray" type="color">#606060</item>
+    <item name="black" type="color">#000000</item>
     <item name="almost_black" type="color">#201e1e</item>
+    <item name="dark_gray" type="color">#666666</item>
+    <item name="gray" type="color">#787878</item>
+    <item name="light_gray" type="color">#9d9d9d</item>
+    <item name="extra_light_gray" type="color">#D6DAE1</item>
+    <item name="separator_gray" type="color">#EFEFEF</item>
+    <item name="white" type="color">#ffffff</item>
+
     <item name="dark_blue" type="color">#004AA9</item>
     <item name="notification_gradient_start" type="color">#63BCFF</item>
     <item name="notification_gradient_end" type="color">#378DFD</item>
