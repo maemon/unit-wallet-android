@@ -43,17 +43,17 @@ android {
                 targets "core"
             }
         }
-       demo {
-           applicationId "com.unitwallet"
-           dimension "mode"
-           resValue "string", "app_name", "Unit Wallet-Demo"
-           buildConfigField "boolean", "BITCOIN_TESTNET", "true"
-           buildConfigField "String", "CASHADDR_PREFIX", '"bchtest"'
-           externalNativeBuild.cmake {
-               cFlags "-DBITCOIN_TESTNET=1"
-               targets "core"
-           }
-       }
+        demo {
+            applicationId "com.unitwallet"
+            dimension "mode"
+            resValue "string", "app_name", "Unit Wallet-Demo"
+            buildConfigField "boolean", "BITCOIN_TESTNET", "true"
+            buildConfigField "String", "CASHADDR_PREFIX", '"bchtest"'
+            externalNativeBuild.cmake {
+                cFlags "-DBITCOIN_TESTNET=1"
+                targets "core"
+            }
+        }
     }
 
     lintOptions.with {
