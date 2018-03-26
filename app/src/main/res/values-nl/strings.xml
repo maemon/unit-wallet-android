@@ -3,7 +3,7 @@
   <!-- About screen blog label -->
   <string name="About.blog">Blog</string>
   <!-- About screen footer -->
-  <string name="About.footer">Gemaakt door het globale Bread team. Versie %1$s</string>
+  <string name="About.footer">Gemaakt door het globale Unit team. Versie %1$s</string>
   <!-- Privay Policy button label -->
   <string name="About.privacy">Privacyverklaring</string>
   <!-- About screen reddit label -->
@@ -77,7 +77,7 @@
   <!-- Approve button label -->
   <string name="BitID.approve">Keur goed</string>
   <!-- <sitename> is requesting authentication using your bitcoin wallet -->
-  <string name="BitID.authenticationRequest">%1$s vraagt om authenticatie om je bitcoin-portemonnee te gebruiken</string>
+  <string name="BitID.authenticationRequest">%1$s vraagt om authenticatie om je bitcoin-cash-portemonnee te gebruiken</string>
   <!-- Deny button label -->
   <string name="BitID.deny">Weigeren</string>
   <!-- BitID error alert title -->
@@ -129,7 +129,7 @@
   <!-- Word label eg. Word #1, Word #2 -->
   <string name="ConfirmPaperPhrase.word">Woord #%1$s</string>
   <!-- Bitcoin denomination picker label -->
-  <string name="DefaultCurrency.bitcoinLabel">Bitcoin-eenheid</string>
+  <string name="DefaultCurrency.bitcoinLabel">Bitcoin-Cash-eenheid</string>
   <!-- Exchange rate label -->
   <string name="DefaultCurrency.rateLabel">Wisselkoers</string>
   <!-- Email unavailable alert title -->
@@ -155,7 +155,7 @@
   <!-- Checking private key balance progress view text -->
   <string name="Import.checking">Persoonlijke sleutel balans checken...</string>
   <!-- Sweep private key confirmation message -->
-  <string name="Import.confirm">%1$s van deze persoonlijke sleutel naar je portemonnee sturen? Het Bitcoin netwerk zal een heffing ontvangen van %2$s.</string>
+  <string name="Import.confirm">%1$s van deze persoonlijke sleutel naar je portemonnee sturen? Het Bitcoin Cash netwerk zal een heffing ontvangen van %2$s.</string>
   <!-- Duplicate key error message -->
   <string name="Import.Error.duplicate">Deze persoonlijke sleutel zit al in je portemonnee.</string>
   <!-- empty private key error message -->
@@ -250,7 +250,7 @@
   <!-- Node status label -->
   <string name="NodeSelector.statusLabel">Connectiestatus van de node</string>
   <!-- Node Selector view title -->
-  <string name="NodeSelector.title">Bitcoin-nodes</string>
+  <string name="NodeSelector.title">Bitcoin-Cash-nodes</string>
   <!-- Bad Payment request alert title -->
   <string name="PaymentProtocol.Errors.badPaymentRequest">Slecht Betalingsverzoek</string>
   <!-- Error opening payment protocol file message -->
@@ -262,9 +262,9 @@
   <!-- Payment too small alert title -->
   <string name="PaymentProtocol.Errors.smallOutputError">Kon de betaling niet uitvoeren</string>
   <!-- Amount too small error message -->
-  <string name="PaymentProtocol.Errors.smallPayment">Bitcoin betalingen kunnen niet minder zijn dan %1$s.</string>
+  <string name="PaymentProtocol.Errors.smallPayment">Bitcoin Cash betalingen kunnen niet minder zijn dan %1$s.</string>
   <!-- Output too small error message. -->
-  <string name="PaymentProtocol.Errors.smallTransaction">Bitcoin transactie outputs kunnen niet minder zijn dan $@.</string>
+  <string name="PaymentProtocol.Errors.smallTransaction">Bitcoin Cash transactie outputs kunnen niet minder zijn dan $@.</string>
   <!-- Unsupported signature type payment protocol error message -->
   <string name="PaymentProtocol.Errors.unsupportedSignatureType">niet-ondersteund handtekening type</string>
   <!-- Untrusted certificate payment protocol error message -->
@@ -352,7 +352,7 @@
   <!-- extimated time -->
   <string name="ReScan.body1">20-45 minuten</string>
   <!-- Syncing explanation -->
-  <string name="ReScan.body2">Als een transactie als voltooid staat op het Bitcoin netwerk maar niet in je Bread.</string>
+  <string name="ReScan.body2">Als een transactie als voltooid staat op het Bitcoin Cash netwerk maar niet in je Bread.</string>
   <!-- Syncing explanation -->
   <string name="ReScan.body3">Je kreeg herhaaldelijk een foutmelding die zei dat je transactie werd afgewezen.</string>
   <!-- Start Sync button label -->
@@ -412,9 +412,9 @@
   <!-- Payee identity not certified alert title. -->
   <string name="Send.identityNotCertified">Begunstigde is niet gecertifcieerd.</string>
   <!-- Invalid address alert message -->
-  <string name="Send.invalidAddressMessage">Het bestemmingsadres is geen geldig bitcoin-adres.</string>
+  <string name="Send.invalidAddressMessage">Het bestemmingsadres is geen geldig bitcoin-cash-adres.</string>
   <!-- Invalid address on pasteboard message -->
-  <string name="Send.invalidAddressOnPasteboard">Plakbord bevat geen geldig bitcoin adres.</string>
+  <string name="Send.invalidAddressOnPasteboard">Plakbord bevat geen geldig bitcoin cash adres.</string>
   <!-- Invalid address alert title -->
   <string name="Send.invalidAddressTitle">Ongeldig Adres</string>
   <!-- Is rescanning error message -->
@@ -440,7 +440,7 @@
   <!-- Send money to label -->
   <string name="Send.toLabel">Naar</string>
   <!-- Adress already used alert message - first part -->
-  <string name="Send.UsedAddress.firstLine">Bitcoin adressen zijn alleen bedoeld voor enkel gebruik.</string>
+  <string name="Send.UsedAddress.firstLine">Bitcoin Cash adressen zijn alleen bedoeld voor enkel gebruik.</string>
   <!-- Adress already used alert message - second part -->
   <string name="Send.UsedAddress.secondLIne">Hergebruikt vermindert privacy voor zowel jou en de ontvanger en kan resulteren in verlies als de ontvanger niet direct het adres beheert.</string>
   <!-- Adress already used alert title -->
@@ -490,7 +490,7 @@
   <!-- Argument is date -->
   <string name="StartPaperPhrase.date">Je hebt voor het laatst je papieren sleutel opgeschreven op %1$s</string>
   <!-- Start view message -->
-  <string name="StartViewController.message">De veiligste en betrouwbaarste manier om bitcoin te gebruiken.</string>
+  <string name="StartViewController.message">De veiligste en betrouwbaarste manier om bitcoin cash te gebruiken.</string>
   <!-- Syncing view connectiong state header text -->
   <string name="SyncingView.connecting">Aan het verbinden</string>
   <!-- Syncing view header text -->
@@ -588,7 +588,7 @@
   <!-- "Sent [$5] to [address]" => This is the "to [address]" part. -->
   <string name="TransactionDetails.to">aan %1$s</string>
   <!-- Transaction ID header -->
-  <string name="TransactionDetails.txHashHeader">Bitcoin Transactie-ID</string>
+  <string name="TransactionDetails.txHashHeader">Bitcoin Cash Transactie-ID</string>
   <!-- (this transaction was) Received at this address: -->
   <string name="TransactionDirection.address">Ontvangen op dit adres</string>
   <!-- (this transaction was) Sent to this address: -->
