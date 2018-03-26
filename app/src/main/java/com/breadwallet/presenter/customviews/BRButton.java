@@ -106,7 +106,7 @@ public class BRButton extends Button {
         TypedArray buttonAttributes = ctx.obtainStyledAttributes(attrs, R.styleable.BRButton);
 
         String customFont = textAttributes.getString(R.styleable.BRText_customFont);
-        TypefacesManager.setCustomFont(ctx, this, Utils.isNullOrEmpty(customFont) ? "CircularPro-Medium.otf" : customFont);
+        TypefacesManager.setCustomFont(ctx, this, Utils.isNullOrEmpty(customFont) ? "HelveticaNeue.ttf" : customFont);
 
         isBreadButton = buttonAttributes.getBoolean(R.styleable.BRButton_isBreadButton, false);
         if (isBreadButton) setBackground(getResources().getDrawable(R.drawable.shadow_trans));
