@@ -13,7 +13,6 @@ import com.breadwallet.presenter.activities.SetPinActivity;
 import com.breadwallet.presenter.activities.PaperKeyActivity;
 import com.breadwallet.presenter.activities.PaperKeyProveActivity;
 import com.breadwallet.presenter.activities.intro.WriteDownActivity;
-import com.breadwallet.presenter.activities.settings.WithdrawBchActivity;
 import com.breadwallet.presenter.entities.PaymentItem;
 import com.breadwallet.presenter.entities.PaymentRequestWrapper;
 import com.breadwallet.tools.manager.BRSharedPrefs;
@@ -206,98 +205,6 @@ public class PostAuth {
         {
             Arrays.fill(seed, (byte) 0);
         }
-
-    }
-
-    public void onSendBch(final Activity app, boolean authAsked, String bchAddress) {
-//        this.bchAddress = bchAddress;
-        byte[] phrase = null;
-        try {
-            phrase = BRKeyStore.getPhrase(app, BRConstants.SEND_BCH_REQUEST);
-        } catch (UserNotAuthenticatedException e) {
-            return;
-        }
-        if (Utils.isNullOrEmpty(phrase)) {
-            RuntimeException ex = new RuntimeException("phrase is malformed: " + (phrase == null ? null : phrase.length));
-            BRErrorPipe.parseError(app, "error 006", ex, true);
-            return;
-        }
-
-        byte[] nullTerminatedPhrase = TypesConverter.getNullTerminatedPhrase(phrase);
-        final byte[] serializedTx = BRWalletManager.sweepBCash(BRKeyStore.getMasterPublicKey(app), bchAddress, nullTerminatedPhrase);
-        assert (serializedTx != null);
-        if (serializedTx == null) {
-            Log.e(TAG, "onSendBch:serializedTx is null");
-            BRErrorPipe.showKeyStoreDialog(app, "No balance", "You have 0 BCH", "close", null,
-                    new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            dialog.cancel();
-                        }
-                    }, null, null);
-        } else {
-            Log.e(TAG, "onSendBch:serializedTx is:" + serializedTx.length);
-            new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    String title = "Failed";
-                    String message = "";
-                    String strUtl = BreadApp.HOST + "/bch/publish-transaction";
-                    Log.e(TAG, "url: " + strUtl);
-                    final MediaType type
-                            = MediaType.parse("application/bchdata");
-                    RequestBody requestBody = RequestBody.create(type, serializedTx);
-                    Request request = new Request.Builder()
-                            .url(strUtl)
-                            .header("Content-Type", "application/bchdata")
-                            .post(requestBody).build();
-                    Response response = APIClient.getInstance(app).sendRequest(request, true, 0);
-                    String responseBody = null;
-                    try {
-                        responseBody = response == null ? null : response.body().string();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                    Log.e(TAG, "onSendBch:" + (response == null ? "resp is null" : response.code() + ":" + response.message()));
-                    boolean success = true;
-                    if (response != null) {
-                        title = "Failed";
-                        if (response.isSuccessful()) {
-                            title = "Success";
-                            message = "";
-                        } else if (response.code() == 503) {
-                            message = "Your BCH has already been sent, or your wallet did not contain BCH before the fork.";
-                        } else {
-                            success = false;
-                            message = "(" + response.code() + ")" + "[" + response.message() + "]" + responseBody;
-                        }
-                    } else {
-                        title = "Failed to send";
-                        message = "Something went wrong";
-                    }
-                    if (!success) {
-                        BRSharedPrefs.putBCHTxId(app, "");
-                        WithdrawBchActivity.updateUi(app);
-                    }
-
-                    final String finalTitle = title;
-                    final String finalMessage = message;
-                    app.runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            BRErrorPipe.showKeyStoreDialog(app, finalTitle, finalMessage, "close", null,
-                                    new DialogInterface.OnClickListener() {
-                                        public void onClick(DialogInterface dialog, int which) {
-                                            dialog.cancel();
-                                        }
-                                    }, null, null);
-                        }
-                    });
-
-                }
-            }).start();
-
-        }
-
 
     }
 

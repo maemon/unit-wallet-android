@@ -157,7 +157,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginStart="16dp"
                 android:text="$"
-                android:textSize="28sp"
+                android:textSize="26sp"
                 app:customFont="HelveticaNeue.ttf"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
