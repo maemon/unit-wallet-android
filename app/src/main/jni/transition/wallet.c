@@ -525,7 +525,7 @@ Java_com_breadwallet_wallet_BRWalletManager_feeForTransactionAmount(JNIEnv *env,
 
     uint64_t fee = BRWalletFeeForTxAmount(_wallet, (uint64_t) amount);
 
-    return (jlong) 1000000;
+    return (jlong) fee;
 }
 
 JNIEXPORT jbyteArray JNICALL
