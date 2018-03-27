@@ -70,7 +70,7 @@ public class BREdit extends EditText {
     private void init(Context ctx, AttributeSet attrs) {
         TypedArray a = ctx.obtainStyledAttributes(attrs, R.styleable.BRText);
         String customFont = a.getString(R.styleable.BRText_customFont);
-        TypefacesManager.setCustomFont(ctx, this, Utils.isNullOrEmpty(customFont) ? "CircularPro-Medium.otf" : customFont);
+        TypefacesManager.setCustomFont(ctx, this, Utils.isNullOrEmpty(customFont) ? "HelveticaNeue.ttf" : customFont);
         a.recycle();
     }
 

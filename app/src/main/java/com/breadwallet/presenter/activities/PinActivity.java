@@ -89,8 +89,6 @@ public class PinActivity extends BRActivity {
             return;
         }
 
-
-
         if (BRKeyStore.getPinCode(this).length() == 4) pinLimit = 4;
 
         keyboard = (BRKeyboard) findViewById(R.id.brkeyboard);
@@ -115,17 +113,10 @@ public class PinActivity extends BRActivity {
                 handleClick(key);
             }
         });
-        keyboard.setBRButtonBackgroundResId(R.drawable.keyboard_trans_button);
-        keyboard.setBRButtonTextColor(R.color.white);
         keyboard.setShowDot(false);
-        keyboard.setBreadground(getDrawable(R.drawable.bread_gradient));
-        keyboard.setCustomButtonBackgroundColor(10, getColor(android.R.color.transparent));
-        keyboard.setDeleteImage(getDrawable(R.drawable.ic_delete_white));
 
         leftButton = (Button) findViewById(R.id.left_button);
         rightButton = (Button) findViewById(R.id.right_button);
-
-        setUpOfflineButtons();
 
         leftButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -318,23 +309,6 @@ public class PinActivity extends BRActivity {
                         }
                     }
                 });
-    }
-
-    private void setUpOfflineButtons() {
-        int activeColor = getColor(white);
-        GradientDrawable leftDrawable = (GradientDrawable) leftButton.getBackground().getCurrent();
-        GradientDrawable rightDrawable = (GradientDrawable) rightButton.getBackground().getCurrent();
-
-        int rad = Utils.getPixelsFromDps(this, (int) getResources().getDimension(R.dimen.radius)/2);
-        int stoke = 2;
-
-        leftDrawable.setCornerRadii(new float[]{rad, rad, 0, 0, 0, 0, rad, rad});
-        rightDrawable.setCornerRadii(new float[]{0, 0, rad, rad, rad, rad, 0, 0});
-
-        leftDrawable.setStroke(stoke, activeColor, 0, 0);
-        rightDrawable.setStroke(stoke, activeColor, 0, 0);
-        leftButton.setTextColor(activeColor);
-        rightButton.setTextColor(activeColor);
     }
 
     @Override

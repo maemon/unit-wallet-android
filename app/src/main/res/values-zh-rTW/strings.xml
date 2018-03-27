@@ -21,7 +21,7 @@
   <!-- Loading Wallet Message -->
   <string name="Account.loadingMessage">正在載入電子錢包</string>
   <!-- Default wallet name -->
-  <string name="AccountHeader.defaultWalletName">我的 Bread</string>
+  <string name="AccountHeader.defaultWalletName">我的 Unit</string>
   <!-- Equals symbol -->
   <string name="AccountHeader.equals">=</string>
   <!-- Manage wallet button title -->

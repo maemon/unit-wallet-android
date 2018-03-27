@@ -32,6 +32,7 @@ import android.widget.ViewFlipper;
 import com.breadwallet.R;
 import com.breadwallet.presenter.activities.util.ActivityUTILS;
 import com.breadwallet.presenter.activities.util.BRActivity;
+import com.breadwallet.presenter.customviews.BRButton;
 import com.breadwallet.presenter.customviews.BRSearchBar;
 import com.breadwallet.presenter.fragments.FragmentManage;
 import com.breadwallet.tools.animation.BRAnimator;
@@ -89,36 +90,23 @@ public class BreadActivity extends BRActivity implements BRWalletManager.OnBalan
         BRPeerManager.OnTxStatusUpdate, BRSharedPrefs.OnIsoChangedListener,
         TransactionDataSource.OnTxAddedListener, FragmentManage.OnNameChanged, ConnectionManager.ConnectionReceiverListener {
 
+    public static final Point screenParametersPoint = new Point();
+    public static boolean appVisible = false;
+
     private static final String TAG = BreadActivity.class.getName();
 
     private LinearLayout sendButton;
     private LinearLayout receiveButton;
-    private ImageButton payButton;
+    private BRButton payButton;
     private LinearLayout menuButton;
     private LinearLayout discoverButton;
-    public static final Point screenParametersPoint = new Point();
-
     private NetworkChangeReceiver mNetworkStateReceiver;
-
     private TextView primaryPrice;
     private TextView secondaryPrice;
-    private TextView equals;
-    private TextView priceChange;
-
     private TextView manageText;
-    private TextView walletName;
-    private TextView emptyTip;
-    private ConstraintLayout walletProgressLayout;
-
-    private RelativeLayout mainLayout;
-    private LinearLayout toolbarLayout;
-    private Toolbar toolBar;
-    private int progress = 0;
-    public static boolean appVisible = false;
     private ImageButton searchIcon;
     public ViewFlipper barFlipper;
     private BRSearchBar searchBar;
-    //    private boolean isSwapped;
     private ConstraintLayout toolBarConstraintLayout;
     private String savedFragmentTag;
     private boolean uiIsDone;
@@ -149,20 +137,14 @@ public class BreadActivity extends BRActivity implements BRWalletManager.OnBalan
 
         app = this;
         getWindowManager().getDefaultDisplay().getSize(screenParametersPoint);
-        // Always cast your custom Toolbar here, and set it as the ActionBar.
-        toolBar = (Toolbar) findViewById(R.id.bread_bar);
 
         initializeViews();
 
         setListeners();
 
-        toolbarLayout.removeView(walletProgressLayout);
-
         setUpBarFlipper();
 
         BRAnimator.init(this);
-        //primaryPrice.setTextSize(TypedValue.COMPLEX_UNIT_PX, t1Size);//make it the size it should be after animation to get the X
-       // secondaryPrice.setTextSize(TypedValue.COMPLEX_UNIT_PX, t2Size);//make it the size it should be after animation to get the X
 
         if (introSetPitActivity != null) introSetPitActivity.finish();
         if (introActivity != null) introActivity.finish();
@@ -406,27 +388,13 @@ public class BreadActivity extends BRActivity implements BRWalletManager.OnBalan
     private void initializeViews() {
         sendButton = (LinearLayout) findViewById(R.id.send_layout);
         receiveButton = (LinearLayout) findViewById(R.id.receive_layout);
-        payButton = (ImageButton) findViewById(R.id.payButton);
+        payButton = (BRButton) findViewById(R.id.payButton);
         manageText = (TextView) findViewById(R.id.manage_text);
-     //   walletName = (TextView) findViewById(R.id.wallet_name_text);
         menuButton = (LinearLayout) findViewById(R.id.menu_layout);
         discoverButton = (LinearLayout) findViewById(R.id.discoverButton);
         primaryPrice = (TextView) findViewById(R.id.primary_price);
         secondaryPrice = (TextView) findViewById(R.id.secondary_price);
-        equals = (TextView) findViewById(R.id.equals);
-        priceChange = (TextView) findViewById(R.id.price_change_text);
-        emptyTip = (TextView) findViewById(R.id.empty_tx_tip);
-//        syncLabel = (TextView) findViewById(R.id.syncing_label);
-//        syncDate = (TextView) findViewById(R.id.sync_date);
-//        loadProgressBar = (ProgressBar) findViewById(R.id.load_wallet_progress);
-//        syncProgressBar = (ProgressBar) findViewById(R.id.sync_progress);
         toolBarConstraintLayout = (ConstraintLayout) findViewById(R.id.bread_toolbar);
-        walletProgressLayout = (ConstraintLayout) findViewById(R.id.loading_wallet_layout);
-
-        mainLayout = (RelativeLayout) findViewById(R.id.main_layout);
-        toolbarLayout = (LinearLayout) findViewById(R.id.toolbar_layout);
-//        syncingLayout = (ConstraintLayout) findViewById(R.id.syncing_layout);
-//        recyclerLayout = (LinearLayout) findViewById(R.id.recycler_layout);
         searchIcon = (ImageButton) findViewById(R.id.search_icon);
         barFlipper = (ViewFlipper) findViewById(R.id.tool_bar_flipper);
         searchBar = (BRSearchBar) findViewById(R.id.search_bar);
@@ -510,7 +478,7 @@ public class BreadActivity extends BRActivity implements BRWalletManager.OnBalan
 //                        boolean preferredBtc = BRSharedPrefs.getPreferredBTC(BreadActivity.this);
 //                        if (!isSwapped) {
                         primaryPrice.setText(formattedBTCAmount);
-                        secondaryPrice.setText("  "+String.format("%s", formattedCurAmount));
+                        secondaryPrice.setText(String.format("%s", formattedCurAmount));
 //                        } else {
 //                            primaryPrice.setText(String.format(" = %s", preferredBtc ? formattedCurAmount : formattedBTCAmount));
 //                            secondaryPrice.setText((preferredBtc ? formattedBTCAmount : formattedCurAmount));
@@ -550,38 +518,6 @@ public class BreadActivity extends BRActivity implements BRWalletManager.OnBalan
         }).start();
     }
 
-    //    private void setWalletLoading() {
-//        loadProgressBar.setProgress(progress);
-//
-//        new Thread(new Runnable() {
-//
-//            @Override
-//            public void run() {
-//                while (loadProgressBar.getProgress() < 100) {
-//                    try {
-//                        Thread.sleep(60);
-//                    } catch (InterruptedException e) {
-//                        e.printStackTrace();
-//                    }
-//                    loadProgressBar.post(new Runnable() {
-//                        @Override
-//                        public void run() {
-//                            progress += 5;
-//                            loadProgressBar.setProgress(progress);
-//                        }
-//                    });
-//
-//                }
-//                walletProgressLayout.post(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        toolbarLayout.removeView(walletProgressLayout);
-//                    }
-//                });
-//            }
-//        }).start();
-//    }
-//
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
@@ -610,7 +546,6 @@ public class BreadActivity extends BRActivity implements BRWalletManager.OnBalan
 
     @Override
     public void onNameChanged(String name) {
-        walletName.setText(name);
     }
 
     @Override
@@ -639,6 +574,5 @@ public class BreadActivity extends BRActivity implements BRWalletManager.OnBalan
         }
 
     }
-
 
 }

@@ -3,7 +3,7 @@
   <!-- About screen blog label -->
   <string name="About.blog">Blog</string>
   <!-- About screen footer -->
-  <string name="About.footer">Lavet af det globale Bread hold. Version %1$s</string>
+  <string name="About.footer">Lavet af det globale Unit hold. Version %1$s</string>
   <!-- Privay Policy button label -->
   <string name="About.privacy">Privatlivspolitik</string>
   <!-- About screen reddit label -->
@@ -77,7 +77,7 @@
   <!-- Approve button label -->
   <string name="BitID.approve">Godkend</string>
   <!-- <sitename> is requesting authentication using your bitcoin wallet -->
-  <string name="BitID.authenticationRequest">%1$s anmoder om godkendelse ved hjælp af din bitcoin-wallet</string>
+  <string name="BitID.authenticationRequest">%1$s anmoder om godkendelse ved hjælp af din bitcoin-cash-wallet</string>
   <!-- Deny button label -->
   <string name="BitID.deny">Afvis</string>
   <!-- BitID error alert title -->
@@ -129,7 +129,7 @@
   <!-- Word label eg. Word #1, Word #2 -->
   <string name="ConfirmPaperPhrase.word">Ord #%1$s</string>
   <!-- Bitcoin denomination picker label -->
-  <string name="DefaultCurrency.bitcoinLabel">Bitcoin visningsenhed</string>
+  <string name="DefaultCurrency.bitcoinLabel">Bitcoin Cash visningsenhed</string>
   <!-- Exchange rate label -->
   <string name="DefaultCurrency.rateLabel">Valutakurs</string>
   <!-- Email unavailable alert title -->
@@ -155,7 +155,7 @@
   <!-- Checking private key balance progress view text -->
   <string name="Import.checking">Tjekker beløb på privat nøgle...</string>
   <!-- Sweep private key confirmation message -->
-  <string name="Import.confirm">Send %1$s fra denne private nøgle til din pung? Bitcoin netværket vil modtage et gebyr på %2$s.</string>
+  <string name="Import.confirm">Send %1$s fra denne private nøgle til din pung? Bitcoin Cash netværket vil modtage et gebyr på %2$s.</string>
   <!-- Duplicate key error message -->
   <string name="Import.Error.duplicate">Denne private nøgle findes allerede i din pung.</string>
   <!-- empty private key error message -->
@@ -218,7 +218,7 @@
   <!-- Manage wallet modal title -->
   <string name="ManageWallet.title">Administrer pung</string>
   <!-- Buy bitcoin title -->
-  <string name="MenuButton.buy">Køb Bitcoin</string>
+  <string name="MenuButton.buy">Køb Bitcoin Cash</string>
   <!-- Menu button title -->
   <string name="MenuButton.lock">Lås pung</string>
   <!-- Menu button title -->
@@ -262,9 +262,9 @@
   <!-- Payment too small alert title -->
   <string name="PaymentProtocol.Errors.smallOutputError">Kunne ikke foretage betaling</string>
   <!-- Amount too small error message -->
-  <string name="PaymentProtocol.Errors.smallPayment">Bitcoin betalinger kan ikke være mindre end %1$s.</string>
+  <string name="PaymentProtocol.Errors.smallPayment">Bitcoin Cash betalinger kan ikke være mindre end %1$s.</string>
   <!-- Output too small error message. -->
-  <string name="PaymentProtocol.Errors.smallTransaction">Bitcoin transaktionsoutput kan ikke være mindre end $@.</string>
+  <string name="PaymentProtocol.Errors.smallTransaction">Bitcoin Cash transaktionsoutput kan ikke være mindre end $@.</string>
   <!-- Unsupported signature type payment protocol error message -->
   <string name="PaymentProtocol.Errors.unsupportedSignatureType">ikke understøttet signaturtype</string>
   <!-- Untrusted certificate payment protocol error message -->
@@ -352,7 +352,7 @@
   <!-- extimated time -->
   <string name="ReScan.body1">20-45 minutter</string>
   <!-- Syncing explanation -->
-  <string name="ReScan.body2">Hvis en transaktion vises som gennemført i bitcoin netværket, men ikke i dit Bread.</string>
+  <string name="ReScan.body2">Hvis en transaktion vises som gennemført i bitcoin cash netværket, men ikke i dit Bread.</string>
   <!-- Syncing explanation -->
   <string name="ReScan.body3">Du modtager gentagne gange en fejlmeddelelse om at din transaktion er blevet afvist.</string>
   <!-- Start Sync button label -->
@@ -378,7 +378,7 @@
   <!-- Security Center Info -->
   <string name="SecurityCenter.info">Aktiver alle sikkerhedsfunktioner for maksimal beskyttelse.</string>
   <!-- Paper Key button description -->
-  <string name="SecurityCenter.paperKeyDescription">Den eneste måde at få adgang til dine bitcoin på, hvis du mister eller opgraderer din telefon.</string>
+  <string name="SecurityCenter.paperKeyDescription">Den eneste måde at få adgang til dine bitcoin cash på, hvis du mister eller opgraderer din telefon.</string>
   <!-- Paper Key button title -->
   <string name="SecurityCenter.paperKeyTitle">Paper key</string>
   <!-- PIN button description -->
@@ -414,7 +414,7 @@
   <!-- Invalid address alert message -->
   <string name="Send.invalidAddressMessage">Modtageradressen er ikke en gyldig bitcoin-adresse.</string>
   <!-- Invalid address on pasteboard message -->
-  <string name="Send.invalidAddressOnPasteboard">Tegnebord indeholder ikke en gyldig bitcoin adresse.</string>
+  <string name="Send.invalidAddressOnPasteboard">Tegnebord indeholder ikke en gyldig bitcoin cash adresse.</string>
   <!-- Invalid address alert title -->
   <string name="Send.invalidAddressTitle">Ugyldig adresse</string>
   <!-- Is rescanning error message -->
@@ -440,7 +440,7 @@
   <!-- Send money to label -->
   <string name="Send.toLabel">Til</string>
   <!-- Adress already used alert message - first part -->
-  <string name="Send.UsedAddress.firstLine">Bitcoin adresser er kun beregnet til en enkelt anvendelse.</string>
+  <string name="Send.UsedAddress.firstLine">Bitcoin Cash adresser er kun beregnet til en enkelt anvendelse.</string>
   <!-- Adress already used alert message - second part -->
   <string name="Send.UsedAddress.secondLIne">Genbrug reducerer privatliv for både dig og modtageren og kan resultere i tab, hvis modtageren ikke har direkte kontrol over adressen.</string>
   <!-- Adress already used alert title -->
@@ -588,7 +588,7 @@
   <!-- "Sent [$5] to [address]" => This is the "to [address]" part. -->
   <string name="TransactionDetails.to">til %1$s</string>
   <!-- Transaction ID header -->
-  <string name="TransactionDetails.txHashHeader">Bitcoin transaktions-ID</string>
+  <string name="TransactionDetails.txHashHeader">Bitcoin Cash transaktions-ID</string>
   <!-- (this transaction was) Received at this address: -->
   <string name="TransactionDirection.address">Modtaget på denne adresse</string>
   <!-- (this transaction was) Sent to this address: -->

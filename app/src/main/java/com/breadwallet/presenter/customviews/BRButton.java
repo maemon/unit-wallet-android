@@ -93,40 +93,37 @@ public class BRButton extends Button {
 
     private void init(Context ctx, AttributeSet attrs) {
         shadow = BitmapFactory.decodeResource(getResources(), R.drawable.shadow);
-        bPaint = new Paint();
-        bPaintStroke = new Paint();
-
         shadowRect = new Rect(0, 0, 100, 100);
         bRect = new RectF(0, 0, 100, 100);
-        TypedArray a = ctx.obtainStyledAttributes(attrs, R.styleable.BRText);
-        String customFont = a.getString(R.styleable.BRText_customFont);
-        TypefacesManager.setCustomFont(ctx, this, Utils.isNullOrEmpty(customFont) ? "CircularPro-Medium.otf" : customFont);
-        float px16 = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 15, getResources().getDisplayMetrics());
-        //check attributes you need, for example all paddings
-        int[] attributes = new int[]{android.R.attr.paddingStart, android.R.attr.paddingTop, android.R.attr.paddingEnd, android.R.attr.paddingBottom, R.attr.isBreadButton, R.attr.buttonType};
-        //then obtain typed array
-        TypedArray arr = ctx.obtainStyledAttributes(attrs, attributes);
-        //You can check if attribute exists (in this example checking paddingRight)
-
-        isBreadButton = arr.getBoolean(4, false);
-
-        int paddingLeft = arr.hasValue(0) ? arr.getDimensionPixelOffset(0, -1) : (int) px16;
-        int paddingTop = arr.hasValue(1) ? arr.getDimensionPixelOffset(1, -1) : 0;
-        int paddingRight = arr.hasValue(2) ? arr.getDimensionPixelOffset(2, -1) : (int) px16;
-        int paddingBottom = arr.hasValue(3) ? arr.getDimensionPixelOffset(3, -1) + (isBreadButton ? (int) px16 : 0) : (isBreadButton ? (int) px16 : 0);
-
-        setType(arr.getInteger(5, 0));
-
+        bPaint = new Paint();
+        bPaintStroke = new Paint();
         bPaint.setAntiAlias(true);
         bPaintStroke.setAntiAlias(true);
 
-        if (isBreadButton) {
-            setBackground(getResources().getDrawable(R.drawable.shadow_trans));
-        }
+        int[] attributes = new int[]{android.R.attr.paddingStart, android.R.attr.paddingTop, android.R.attr.paddingEnd, android.R.attr.paddingBottom};
+        TypedArray paddingAttributes = ctx.obtainStyledAttributes(attrs, attributes);
+        TypedArray textAttributes = ctx.obtainStyledAttributes(attrs, R.styleable.BRText);
+        TypedArray buttonAttributes = ctx.obtainStyledAttributes(attrs, R.styleable.BRButton);
 
+        String customFont = textAttributes.getString(R.styleable.BRText_customFont);
+        TypefacesManager.setCustomFont(ctx, this, Utils.isNullOrEmpty(customFont) ? "HelveticaNeue.ttf" : customFont);
+
+        isBreadButton = buttonAttributes.getBoolean(R.styleable.BRButton_isBreadButton, false);
+        if (isBreadButton) setBackground(getResources().getDrawable(R.drawable.shadow_trans));
+
+        setType(buttonAttributes.getInteger(R.styleable.BRButton_buttonType, 0));
+
+        float px16 = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 15, getResources().getDisplayMetrics());
+        int paddingLeft = paddingAttributes.hasValue(0) ? paddingAttributes.getDimensionPixelOffset(0, -1) : (int) px16;
+        int paddingTop = paddingAttributes.hasValue(1) ? paddingAttributes.getDimensionPixelOffset(1, -1) : 0;
+        int paddingRight = paddingAttributes.hasValue(2) ? paddingAttributes.getDimensionPixelOffset(2, -1) : (int) px16;
+        int paddingBottom = paddingAttributes.hasValue(3) ? paddingAttributes.getDimensionPixelOffset(3, -1) + (isBreadButton ? (int) px16 : 0) : (isBreadButton ? (int) px16 : 0);
         setPadding(paddingLeft, paddingTop, paddingRight, paddingBottom);
-        a.recycle();
-        arr.recycle();
+
+        textAttributes.recycle();
+        buttonAttributes.recycle();
+        paddingAttributes.recycle();
+
         final ViewTreeObserver observer = getViewTreeObserver();
         observer.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             @Override

@@ -273,8 +273,8 @@ public class FragmentSend extends Fragment {
                     feeText.setVisibility(View.VISIBLE);
                     edit.setVisibility(View.VISIBLE);
                     isoText.setTextColor(getContext().getColor(R.color.almost_black));
-                    isoText.setText(BRCurrency.getSymbolByIso(getActivity(), selectedIso));
-                    isoText.setTextSize(28);
+                    isoText.setText(BRCurrency.getCurrencyName(getActivity(), selectedIso));
+                    isoText.setTextSize(24);
                     final float scaleX = amountEdit.getScaleX();
                     amountEdit.setScaleX(0);
 
@@ -676,8 +676,8 @@ String bcTest = "";
         String balanceString;
         String iso = selectedIso;
         curBalance = BRWalletManager.getInstance().getBalance(getActivity());
-        isoText.setText(BRCurrency.getSymbolByIso(getActivity(), selectedIso));
-        isoButton.setText(String.format("%s(%s)", BRCurrency.getCurrencyName(getActivity(), selectedIso), BRCurrency.getSymbolByIso(getActivity(), selectedIso)));
+        isoText.setText(BRCurrency.getCurrencyName(getActivity(), selectedIso));
+        isoButton.setText(BRCurrency.getCurrencyName(getActivity(), selectedIso));
         //Balance depending on ISO
         BigDecimal balanceForISO = BRExchange.getAmountFromSatoshis(getActivity(), iso, new BigDecimal(curBalance));
         //formattedBalance

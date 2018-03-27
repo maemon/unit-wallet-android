@@ -5,17 +5,14 @@
                 android:id="@+id/main_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:elevation="4dp"
     >
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/syncing_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
+        android:layout_margin="16dp"
         android:animateLayoutChanges="true"
-        android:elevation="8dp"
         android:keepScreenOn="true"
         android:visibility="visible"
         tools:layout_constraintLeft_creator="1"

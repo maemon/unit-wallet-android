@@ -3,7 +3,7 @@
   <!-- About screen blog label -->
   <string name="About.blog">Blog</string>
   <!-- About screen footer -->
-  <string name="About.footer">Erstellt vom globalen Bread-Team. Version %1$s</string>
+  <string name="About.footer">Erstellt vom globalen Unit-Team. Version %1$s</string>
   <!-- Privay Policy button label -->
   <string name="About.privacy">Datenschutzerklärung</string>
   <!-- About screen reddit label -->
@@ -77,7 +77,7 @@
   <!-- Approve button label -->
   <string name="BitID.approve">Bestätigen</string>
   <!-- <sitename> is requesting authentication using your bitcoin wallet -->
-  <string name="BitID.authenticationRequest">%1$s fordert die Authentifizierung über Ihr Bitcoin-Wallet an</string>
+  <string name="BitID.authenticationRequest">%1$s fordert die Authentifizierung über Ihr Bitcoin-Cash-Wallet an</string>
   <!-- Deny button label -->
   <string name="BitID.deny">Ablehnen</string>
   <!-- BitID error alert title -->
@@ -129,7 +129,7 @@
   <!-- Word label eg. Word #1, Word #2 -->
   <string name="ConfirmPaperPhrase.word">Wort #%1$s</string>
   <!-- Bitcoin denomination picker label -->
-  <string name="DefaultCurrency.bitcoinLabel">Bitcoin-Anzeigeeinheit</string>
+  <string name="DefaultCurrency.bitcoinLabel">Bitcoin-Cash-Anzeigeeinheit</string>
   <!-- Exchange rate label -->
   <string name="DefaultCurrency.rateLabel">Wechselkurs</string>
   <!-- Email unavailable alert title -->
@@ -218,7 +218,7 @@
   <!-- Manage wallet modal title -->
   <string name="ManageWallet.title">Wallet verwalten</string>
   <!-- Buy bitcoin title -->
-  <string name="MenuButton.buy">Bitcoin kaufen</string>
+  <string name="MenuButton.buy">Bitcoin Cash kaufen</string>
   <!-- Menu button title -->
   <string name="MenuButton.lock">Wallet sperren</string>
   <!-- Menu button title -->
@@ -412,9 +412,9 @@
   <!-- Payee identity not certified alert title. -->
   <string name="Send.identityNotCertified">die Identität des Zahlungsempfängers ist nicht bestätigt.</string>
   <!-- Invalid address alert message -->
-  <string name="Send.invalidAddressMessage">Die Zieladresse ist keine gültige Bitcoin-Adresse.</string>
+  <string name="Send.invalidAddressMessage">Die Zieladresse ist keine gültige Bitcoin-Cash-Adresse.</string>
   <!-- Invalid address on pasteboard message -->
-  <string name="Send.invalidAddressOnPasteboard">Pasteboard enthält keine gültige Bitcoin-Adresse.</string>
+  <string name="Send.invalidAddressOnPasteboard">Pasteboard enthält keine gültige Bitcoin-Cash-Adresse.</string>
   <!-- Invalid address alert title -->
   <string name="Send.invalidAddressTitle">Ungültige Adresse</string>
   <!-- Is rescanning error message -->
@@ -440,7 +440,7 @@
   <!-- Send money to label -->
   <string name="Send.toLabel">An</string>
   <!-- Adress already used alert message - first part -->
-  <string name="Send.UsedAddress.firstLine">Bitcoin-Adressen sind lediglich zur einmaligen Benutzung vorgesehen.</string>
+  <string name="Send.UsedAddress.firstLine">BitcoinCash--Adressen sind lediglich zur einmaligen Benutzung vorgesehen.</string>
   <!-- Adress already used alert message - second part -->
   <string name="Send.UsedAddress.secondLIne">Durch eine mehrfache Verwendung können sowohl du als auch der Empfänger leichter identifiziert werden und falls der Empfänger die Adresse nicht direkt kontrolliert, kann das Verluste bedeuten.</string>
   <!-- Adress already used alert title -->
@@ -490,7 +490,7 @@
   <!-- Argument is date -->
   <string name="StartPaperPhrase.date">Du hast dir deinen Offlineschlüssel zuletzt am %1$s notiert</string>
   <!-- Start view message -->
-  <string name="StartViewController.message">Die sicherste Option zur Nutzung von Bitcoin.</string>
+  <string name="StartViewController.message">Die sicherste Option zur Nutzung von Bitcoin Cash.</string>
   <!-- Syncing view connectiong state header text -->
   <string name="SyncingView.connecting">Verbindet</string>
   <!-- Syncing view header text -->
@@ -588,7 +588,7 @@
   <!-- "Sent [$5] to [address]" => This is the "to [address]" part. -->
   <string name="TransactionDetails.to">an %1$s</string>
   <!-- Transaction ID header -->
-  <string name="TransactionDetails.txHashHeader">Bitcoin-Transaktions-ID</string>
+  <string name="TransactionDetails.txHashHeader">Bitcoin-Cash-Transaktions-ID</string>
   <!-- (this transaction was) Received at this address: -->
   <string name="TransactionDirection.address">An dieser Adresse empfangen</string>
   <!-- (this transaction was) Sent to this address: -->

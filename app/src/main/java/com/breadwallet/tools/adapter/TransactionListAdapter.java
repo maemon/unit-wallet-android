@@ -186,11 +186,8 @@ public class TransactionListAdapter extends RecyclerView.Adapter<RecyclerView.Vi
         boolean received = item.getSent() == 0;
        // convertView.arrowIcon.setImageResource(received ? R.drawable.arrow_down_bold_circle : R.drawable.arrow_up_bold_circle);
         convertView.mainLayout.setBackgroundResource(getResourceByPos(position));
-        convertView.sentReceived.setText(received ? mContext.getString(R.string.TransactionDetails_received, "") : mContext.getString(R.string.TransactionDetails_sent, ""));        convertView.toFrom.setText("");
-        convertView.sentReceived.setTextSize(18);
-        final String addr = "";
-
-      //  final String addr = received ? item.getFrom()[0] : item.getTo()[0];
+        convertView.sentReceived.setText(mContext.getString(received ? R.string.TransactionDetails_received : R.string.TransactionDetails_sent, ""));
+        convertView.toFrom.setText("");
         convertView.account.setText("");
         int blockHeight = item.getBlockHeight();
         int confirms = blockHeight == Integer.MAX_VALUE ? 0 : BRSharedPrefs.getLastBlockHeight(mContext) - blockHeight + 1;
@@ -267,8 +264,6 @@ public class TransactionListAdapter extends RecyclerView.Adapter<RecyclerView.Vi
         boolean isBTCPreferred = BRSharedPrefs.getPreferredBTC(mContext);
         String iso = isBTCPreferred ? "BTC" : BRSharedPrefs.getIso(mContext);
         convertView.amount.setText(BRCurrency.getFormattedCurrencyString(mContext, iso, BRExchange.getAmountFromSatoshis(mContext, iso, new BigDecimal(satoshisAmount))));
-        convertView.amount.setTextSize(18);
-
 
         //if it's 0 we use the current time.
         long timeStamp = item.getTimeStamp() == 0 ? System.currentTimeMillis() : item.getTimeStamp() * 1000;
@@ -285,7 +280,7 @@ public class TransactionListAdapter extends RecyclerView.Adapter<RecyclerView.Vi
         }
 
         prompt.mainLayout.setOnClickListener(TxManager.getInstance().promptInfo.listener);
-        prompt.mainLayout.setBackgroundResource(R.drawable.tx_rounded);
+        prompt.mainLayout.setBackgroundResource(R.drawable.tx_not_rounded);
         prompt.title.setText(TxManager.getInstance().promptInfo.title);
         prompt.description.setText(TxManager.getInstance().promptInfo.description);
 
@@ -294,20 +289,11 @@ public class TransactionListAdapter extends RecyclerView.Adapter<RecyclerView.Vi
     private void setSyncing(final SyncingHolder syncing) {
 //        Log.e(TAG, "setSyncing: " + syncing);
         TxManager.getInstance().syncingHolder = syncing;
-        syncing.mainLayout.setBackgroundResource(R.drawable.tx_rounded);
+        syncing.mainLayout.setBackgroundResource(R.drawable.tx_not_rounded);
     }
 
     private int getResourceByPos(int pos) {
-        if (TxManager.getInstance().currentPrompt != null) pos--;
-        if (itemFeed != null && itemFeed.size() == 1) {
-            return R.drawable.tx_rounded;
-        } else if (pos == 0) {
-            return R.drawable.tx_rounded_up;
-        } else if (itemFeed != null && pos == itemFeed.size() - 1) {
-            return R.drawable.tx_rounded_down;
-        } else {
-            return R.drawable.tx_not_rounded;
-        }
+        return R.drawable.tx_not_rounded;
     }
 
     public void filterBy(String query, boolean[] switches) {
