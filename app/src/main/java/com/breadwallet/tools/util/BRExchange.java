@@ -90,7 +90,7 @@ public class BRExchange {
             int unit = BRSharedPrefs.getCurrencyUnit(app);
             switch (unit) {
                 case CURRENT_UNIT_BITS:
-                    currencySymbolString = "CSH";
+                    currencySymbolString = "cash";
                     break;
                 case BRConstants.CURRENT_UNIT_MBITS:
                     currencySymbolString = "m" + BRConstants.bitcoinUppercase;

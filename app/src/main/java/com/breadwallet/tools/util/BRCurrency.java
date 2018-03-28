@@ -161,7 +161,7 @@ public class BRCurrency {
                 int unit = BRSharedPrefs.getCurrencyUnit(app);
                 switch (unit) {
                     case CURRENT_UNIT_BITS:
-                        return "CSH";
+                        return "cash";
                     case BRConstants.CURRENT_UNIT_MBITS:
                         return "MBits";
                     case BRConstants.CURRENT_UNIT_BITCOINS:
