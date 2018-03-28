@@ -5,15 +5,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-    <android.support.constraint.ConstraintLayout android:id="@+id/constraintLayout"
-                                                 xmlns:android="http://schemas.android.com/apk/res/android"
-                                                 xmlns:app="http://schemas.android.com/apk/res-auto"
-                                                 android:layout_width="match_parent"
-                                                 android:layout_height="match_parent"
-                                                 android:layout_marginLeft="16dp"
-                                                 android:layout_marginRight="16dp"
-                                                 android:filterTouchesWhenObscured="true">
-
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:filterTouchesWhenObscured="true">
 
         <com.breadwallet.presenter.customviews.BRText
             android:id="@+id/sent_received"
