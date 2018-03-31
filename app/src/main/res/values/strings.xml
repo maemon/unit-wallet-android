@@ -322,7 +322,7 @@
   <!-- Enter paper key instruction -->
   <string name="RecoverWallet.instruction">Enter Paper Key</string>
   <!-- Recover wallet intro -->
-  <string name="RecoverWallet.intro">Recover your Unit with your paper key.</string>
+  <string name="RecoverWallet.intro">Recover your Unit wallet with your paper key.</string>
   <!-- Invalid paper key message -->
   <string name="RecoverWallet.invalid">The paper key you entered is invalid. Please double-check each word and try again.</string>
   <!-- Previous button accessibility label -->

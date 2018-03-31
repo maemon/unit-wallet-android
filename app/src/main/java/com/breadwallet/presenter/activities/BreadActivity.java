@@ -124,6 +124,7 @@ public class BreadActivity extends BRActivity implements BRWalletManager.OnBalan
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_bread);
         BRWalletManager.getInstance().addBalanceChangedListener(this);
         BRPeerManager.getInstance().addStatusUpdateListener(this);
@@ -153,7 +154,6 @@ public class BreadActivity extends BRActivity implements BRWalletManager.OnBalan
         updateUI();
 
         TxManager.getInstance().init(this);
-
     }
 
     @Override
